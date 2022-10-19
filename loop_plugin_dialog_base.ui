@@ -259,10 +259,10 @@
   <widget class="QLabel" name="Help_Label">
    <property name="geometry">
     <rect>
-     <x>860</x>
+     <x>840</x>
      <y>70</y>
-     <width>351</width>
-     <height>31</height>
+     <width>150</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
@@ -449,9 +449,9 @@
   <widget class="QTextEdit" name="Help_TextEdit">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>810</x>
      <y>100</y>
-     <width>241</width>
+     <width>291</width>
      <height>421</height>
     </rect>
    </property>
@@ -585,6 +585,65 @@
    <property name="text">
     <string/>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>160</y>
+     <width>101</width>
+     <height>65</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QRadioButton" name="Verbose1_radioButton">
+      <property name="text">
+       <string>Verbose Level 1</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="Verbose2_radioButton_2">
+      <property name="text">
+       <string>Verbose Level 2</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="Verbose3_radioButton_3">
+      <property name="text">
+       <string>Verbose Level 3</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>260</y>
+     <width>73</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QCheckBox" name="Aus_checkBox">
+      <property name="text">
+       <string>Aus</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="Overwrite_checkBox_2">
+      <property name="text">
+       <string>Overwrite</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

@@ -111,7 +111,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
             self.QLine_and_Label_mover(320,280,320,300," Enter Intrusion Text:",self.Intrusion_Label,self.Intrusion_LineEditor)
             ## The below write the 2 define string into two QLineEditor
             self.QLineEditor_default_string('sill','intrusive')
-            self.Help_TextEdit.setText('Information')
+            self.Help_TextEdit.setText(self.list_of_infos[0])  ## This line is used to printout the help function
             self.Save_pushButton.clicked.connect(self.save_geol_IdName)
             return
 ############################################################################################################
@@ -121,7 +121,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
             p,self.FaultPath       = self.activate_layers()                                    ## This help select the shapefile
             if self.FaultButton.objectName()=='FaultButton':
                 self.FaultPath     = self.FaultPath
-            fault_comboHeader      = ['Default Dip*', 'Dip Direction*','Feature*', 'Dip Direction type*', 'fdipest*', 'Point ID*']
+            fault_comboHeader      = ['Default Dip*', 'Dip Direction*','Feature*', 'Dip Direction type*', 'Fdipest*', 'Point ID*']
             colNames               = xLayerReader()
             self.label_mover(fault_comboHeader)
             self.combo_column_appender(colNames,self.FaultButton.objectName())                                        # This code add element in combo items
@@ -136,6 +136,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
             ## The below write the 2 define string into two QLineEditor
             self.QLineEditor_default_string('Fault','shallow,steep,vertical')
             self.clear_partially_combo_list(6)
+            self.Help_TextEdit.setText(self.list_of_infos[0])           ## This line is used to printout the help function
             self.Save_pushButton.clicked.connect(self.save_fault_IdName)
             return
 ############################################################################################################
@@ -160,6 +161,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
             ## The below write the 2 define string into two QLineEditor
             self.QLineEditor_default_string('Bed','overturned')
             self.clear_partially_combo_list(6)
+            self.Help_TextEdit.setText(self.list_of_infos[0])           ## This line is used to printout the help function
             self.Save_pushButton.clicked.connect(self.save_struct_IdName)
             return
 #**********************************************************************************************************
@@ -182,6 +184,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
             self.clear_all_label()
             self.Geology_checkBox.setChecked(True)
             self.GeolButton.setEnabled(False)                                            ### To deactivate the layer so that it can't be used in any other call
+            self.Help_TextEdit.clear()
         return 
 ############################################################################################################
 ###### This function save fault Layer ID name into a scroll down search
@@ -202,6 +205,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
             self.clear_all_label()
             self.Fault_checkBox.setChecked(True)
             self.FaultButton.setEnabled(False)                                          ### To deactivate the layer so that it can't be used in any other call
+            self.Help_TextEdit.clear()
         return
 ############################################################################################################
 ###### This function save Structure/Point Layer ID name into a scroll down search
@@ -222,6 +226,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
             self.Structure_checkBox.setChecked(True)
             self.clear_all_label()
             self.StructButton.setEnabled(False)          ### To deactivate the layer so that it can't be used in any other call
+            self.Help_TextEdit.clear() 
         return 
 ############################################################################################################
     ##### This function save the DTM path and check the box once the file is selected.
@@ -275,7 +280,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
      ###### This function append combo elt to all layer name
     def combo_column_appender(self,col_list,layerobject):
         for id,elt2 in enumerate(self.combo_list()):
-            col_list=create_orientation_help(col_list,id,layerobject)
+            col_list, self.list_of_infos=create_orientation_help(col_list,id,layerobject)
             if not self.cmbFormationLayerIDName:
                 elt2.addItems(col_list)
             else:
