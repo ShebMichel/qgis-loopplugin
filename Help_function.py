@@ -67,8 +67,6 @@ def create_orientation_help(col_list,id,layerobjectName):#(elt1, elt2, elt3):
     min_help             = 'Min Age*: field that contains minimum age of unit defined by ccode.'
     max_params           = ['max_age_ma','MAX_TIME_Y','base_start','AgeMax','RELAGE','MAXAGE','No_col','RM_AGE']
     max_help             = 'Max Age*: field that contains maximum age of unit defined by ccode.'
-
-    
     ################################################ Here we are dealing with Structure layer selection
     structure_label   = ['Dip*','Dip Direction*','Feature*','Dip Direction Convention*','Overturned Field*','Point ID*']
     if layerobjectName=='StructButton':
@@ -76,27 +74,27 @@ def create_orientation_help(col_list,id,layerobjectName):#(elt1, elt2, elt3):
         if id==0:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in d_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
         elif id==1:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in dd_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==2:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in sf_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==4:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in bo_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==5:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in o_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         else:
                 col_list = col_list
@@ -108,88 +106,84 @@ def create_orientation_help(col_list,id,layerobjectName):#(elt1, elt2, elt3):
         if id==0:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in fdip_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
         elif id==1:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in fdipdir_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==2:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in ff_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==4:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in fdipest_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==5:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in o_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         else:
                 col_list = col_list
 
     ################################################ Here we are dealing with Geology layer selection
     geol_label       = ['Formation*', 'Group*','Supergroup*', 'Description*', 'Fm code*', 'Rocktype 1*','Rocktype 2*','Polygon ID*','Min Age*','Max Age*']
-    
     if layerobjectName=='GeolButton':
         help_info =[str(c_help)+'\n \n'+str(g_help)+'\n \n'+str(g2_help)+'\n \n'+str(ds_help)+'\n \n'+str(u_help)+'\n \n'+str(r1_help)+'\n \n'+str(r2_help)+'\n \n'+str(o_help)+'\n \n'+str(min_help)+'\n \n'+str(max_help)+'\n \n'+str(sill_help)+'\n \n'+str(intrusive_help)]
         if id==0:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in c_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
-
         elif id==1:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in g_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
-
         elif id==2:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in g2_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
         elif id==3:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in ds_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
-#    ds_params
         elif id==4:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in u_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
         elif id==5:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in r1_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
         elif id==6:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in r2_params:
-                        if col_elt==col_dir_params:                 
+                        if col_elt.lower()==col_dir_params.lower():                 
                             col_list.insert(0,col_list.pop(idx))
         elif id==7:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in o_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==8:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in min_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         elif id==9:
             for idx,col_elt in enumerate(col_list):
                     for col_dir_params in max_params:
-                        if col_elt==col_dir_params:                          
+                        if col_elt.lower()==col_dir_params.lower():                          
                             col_list.insert(0,col_list.pop(idx))
         else:
             col_list = col_list

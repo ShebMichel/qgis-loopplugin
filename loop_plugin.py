@@ -169,8 +169,9 @@ class Loop_plugin:
 
         # will be set False in run()
         self.first_start = True
-
-
+        ####----
+        #self.addPipeLinePoint.canvasClicked.connect(self.evaluatePipeLine)
+        ####----
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
@@ -182,7 +183,9 @@ class Loop_plugin:
 
     def run(self):
         """Run method that performs all the real work"""
-
+        ####----
+        #self.iface.setMapTool(self.addPipeLinePoint)
+        ####----
         # Create the dialog with elements (after translation) and keep reference
         # Only create GUI ONCE in callback, so that it will only load when the plugin is started
         if self.first_start == True:
@@ -198,3 +201,4 @@ class Loop_plugin:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
             pass
+# ####----

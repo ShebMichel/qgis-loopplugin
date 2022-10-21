@@ -10,7 +10,7 @@ import io
 from PyQt5.QtWidgets import QComboBox
 from PyQt5.QtCore import QRect
 from PyQt5.QtWidgets import QComboBox,QLabel,QAction, QFileDialog, QMessageBox, QTreeWidgetItem
-
+from qgis.gui import QgsMapToolEmitPoint, QgsRubberBand
 ##########################################################
 ###### This function load Layers into a scroll down search
 def shapeFileloader(file_list):
@@ -25,22 +25,32 @@ def shapeFileloader(file_list):
     return 
 ###### This function generate Layer ID or it's column name 
 def xLayerReader():
-	mc = iface.mapCanvas()
-	lyr= mc.currentLayer()
-	#print('', lyr.name())
-	#print('The active layer name is {}'.format(lyr.name()))
-	layer_colnames = [ ]
-	for field in lyr.fields():
-	  layer_colnames.append(field.name())
-	#print('The active col name is {}'.format(layer_colnames))
-	return layer_colnames
+    mc = iface.mapCanvas()
+    lyr= mc.currentLayer()
+    #print('', lyr.name())
+    #print('The active layer name is {}'.format(lyr.name()))
+    layer_colnames = [ ]
+    for field in lyr.fields():
+      layer_colnames.append(field.name())
+    #print('The active col name is {}'.format(layer_colnames))
+    return layer_colnames
 ###### This function create json file     
 def create_json_file(data_path,data):
-	try:
-		to_unicode = unicode
-	except NameError:
-		to_unicode = str
-	with io.open(str(data_path)+'/'+'data.json', 'w', encoding='utf8') as outfile:
-		str_ = json.dumps(data,indent=4,sort_keys=True, separators=(',',':'),ensure_ascii=False)
-		outfile.write(to_unicode(str_))
-		return
+    try:
+        to_unicode = unicode
+    except NameError:
+        to_unicode = str
+    with io.open(str(data_path)+'/'+'data.json', 'w', encoding='utf8') as outfile:
+        str_ = json.dumps(data,indent=4,sort_keys=True, separators=(',',':'),ensure_ascii=False)
+        outfile.write(to_unicode(str_))
+        return
+#####################################
+
+def evaluatePipeLine(self, point, button):
+    if button ==Qt.LeftButton:
+        self.rbPipeLine.addPoint(point)
+        self.rbPipeLine.show()
+    elif button == Qt.RightButton:
+        pipeline = self.rbPipeLine.asGeometry()
+        QMessageBox.information(None,"Pipeline",pipeline.asWkt())
+        self.rbPipeLine.reset()
