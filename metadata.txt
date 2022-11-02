@@ -8,12 +8,13 @@ qgisMinimumVersion=3.0
 description=This plugin preprocess shapefile inputs to generate python script and json file that are used as input for map2loop
 version=0.1
 author=Michel M. Nzikou / CET - UWA
-email=michel.nzikou@alumni.uleth.ca
+email=michel.nzikoumamboukou@uwa.edu.au
 
 about=Allow the user to input various shapefile layers which is then processed to output a json and python script that is used as input to run a Map2Loop job.
 
-tracker=https://github.com/ShebMichel/qgis-loopplugin/issues
-repository=https://github.com/ShebMichel/qgis-loopplugin
+tracker=https://github.com/Loop3D/qgis-loopplugin/issues
+repository=https://github.com/Loop3D/qgis-loopplugin
+
 # End of mandatory metadata
 
 # Recommended items:
@@ -25,7 +26,7 @@ hasProcessingProvider=no
 # Tags are comma separated with spaces allowed
 tags=QGIS, Layers, Attributes, Python, Json
 
-homepage=https://github.com/ShebMichel
+homepage=https://github.com/Loop3D
 category=Plugins
 icon=icon.png
 # experimental flag

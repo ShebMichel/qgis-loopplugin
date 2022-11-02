@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1034</width>
-    <height>593</height>
+    <height>668</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>490</y>
+     <y>540</y>
      <width>151</width>
      <height>41</height>
     </rect>
@@ -36,8 +36,8 @@
   <widget class="QPushButton" name="Save_pushButton">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>490</y>
+     <x>220</x>
+     <y>540</y>
      <width>151</width>
      <height>41</height>
     </rect>
@@ -57,7 +57,7 @@
    <property name="geometry">
     <rect>
      <x>410</x>
-     <y>490</y>
+     <y>540</y>
      <width>151</width>
      <height>41</height>
     </rect>
@@ -79,7 +79,7 @@
      <x>332</x>
      <y>230</y>
      <width>141</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -115,7 +115,7 @@
      <x>330</x>
      <y>370</y>
      <width>141</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -123,7 +123,7 @@
    <property name="geometry">
     <rect>
      <x>910</x>
-     <y>530</y>
+     <y>540</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -156,7 +156,7 @@
      <widget class="QComboBox" name="cmbFormationLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -167,7 +167,7 @@
      <widget class="QComboBox" name="cmbGroupLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -178,7 +178,7 @@
      <widget class="QComboBox" name="cmbSupergroupLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -189,7 +189,7 @@
      <widget class="QComboBox" name="cmbDescriptionLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -200,7 +200,7 @@
      <widget class="QComboBox" name="cmbFmLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -211,7 +211,7 @@
      <widget class="QComboBox" name="cmbRocktype1LayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -222,7 +222,7 @@
      <widget class="QComboBox" name="cmbRocktype2LayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -233,7 +233,7 @@
      <widget class="QComboBox" name="cmbPointIDLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -244,7 +244,7 @@
      <widget class="QComboBox" name="cmbMinAgeLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -255,7 +255,7 @@
      <widget class="QComboBox" name="cmbMaxAgeLayerIDName">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -397,8 +397,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>160</y>
+     <x>330</x>
+     <y>420</y>
      <width>101</width>
      <height>65</height>
     </rect>
@@ -412,14 +412,14 @@
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="Verbose2_radioButton_2">
+     <widget class="QRadioButton" name="Verbose2_radioButton">
       <property name="text">
        <string>Verbose Level 2</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="Verbose3_radioButton_3">
+     <widget class="QRadioButton" name="Verbose3_radioButton">
       <property name="text">
        <string>Verbose Level 3</string>
       </property>
@@ -430,8 +430,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>240</y>
+     <x>460</x>
+     <y>440</y>
      <width>73</width>
      <height>42</height>
     </rect>
@@ -525,7 +525,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -558,7 +558,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -591,7 +591,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>390</x>
@@ -624,7 +624,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>580</x>
@@ -652,6 +652,318 @@
       </property>
       <property name="text">
        <string>Load DTM Layer</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="param_label1">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>101</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label2">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>148</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label3">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>195</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label4">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>242</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label5">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>289</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label6">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>337</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label7">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>384</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label8">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>432</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="param_label9">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>479</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Placeholder</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol8_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>454</y>
+     <width>139</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol1_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>123</y>
+     <width>139</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="Geol2_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>170</y>
+     <width>139</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol3_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>217</y>
+     <width>139</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol4_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>264</y>
+     <width>139</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol5_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>311</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol6_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>359</y>
+     <width>139</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol7_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>406</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Geol9_LineEditor">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>501</y>
+     <width>139</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>110</y>
+     <width>135</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_5">
+    <item>
+     <widget class="QLabel" name="CRS_label">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Target CRS</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="CRS_LineEditor"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>30</y>
+     <width>96</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_7">
+    <item>
+     <widget class="QCheckBox" name="ROI_checkBox">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="ROIButton">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>ROI</string>
       </property>
      </widget>
     </item>

@@ -54,3 +54,28 @@ def evaluatePipeLine(self, point, button):
         pipeline = self.rbPipeLine.asGeometry()
         QMessageBox.information(None,"Pipeline",pipeline.asWkt())
         self.rbPipeLine.reset()
+
+    ############################################################################################################
+def RemoveAllLayersExcept(label1,label2):
+    # This function remove the existing layer
+    if label1.isEnabled() and label2.isChecked():
+        #QgsProject.instance().removeMapLayer(lyr)
+        List_of_layers=QgsProject.instance().mapLayers()
+        for idx,lyr in enumerate(List_of_layers):
+            #    #lyr = List_of_layers[i]
+            QgsProject.instance().removeMapLayer(lyr)
+            if idx==0:
+               break
+
+    return
+    # layer_ids = []
+    # for l in layers:
+    #     layer_ids.append(l.id())
+    # print('layer_ids', layer_ids)
+    # for lyr in QgsProject.instance().mapLayers():
+    #     print(lyr)
+    #     if lyr not in layer_ids:
+    #         print('not')
+    #         #QgsProject.instance().removeMapLayer(lyr)
+    #     else:
+    #         pass
