@@ -29,7 +29,7 @@ Once all layers are processed, json file and python script are created and then 
 If the plugin is availaible in QGIS plugin tabs launch it by clicking the Loop icon,
 in case, it is not available, select then Loop Processor from the plugin menu/installed
 
-A usage example can be seen below:*
+A usage example of the automated results after the geology layer is loaded:*
 
 <p align="center">
 <img src="https://github.com/ShebMichel/qgis-animated_gif/blob/main/launch_simulation.gif"/>
@@ -61,13 +61,11 @@ A usage example can be seen below:*
 - Once (Save layer Params) is clicked, individual parameter in the combobox is saved and this is 
 	confirmed by the (Tick) button being selected.
 
- An example can be seen below:
+ 
 
- Automated results after the geology layer is loaded:*
-
-<p align="center">
-<img src="filter_geol_data.gif">
-</p>
+[//]: # <p align="center">
+[//]: # <img src="filter_geol_data.gif">
+[//]: # </p>
 
 ### Repeat the process for Fault Polyline, Structure Point and DTM Layers
 
