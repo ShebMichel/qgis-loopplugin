@@ -30,7 +30,9 @@ If the plugin is availaible in QGIS plugin tabs launch it by clicking the Loop i
 in case, it is not available, select then Loop Processor from the plugin menu/installed
 
 A usage example can be seen below:
-
+<p align="center">
+<img src="cut.gif">
+</p>
 
 ![til](https://github.com/ShebMichel/qgis-animated_gif/blob/main/launch_simulation.gif)
 
