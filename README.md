@@ -32,7 +32,7 @@ in case, it is not available, select then Loop Processor from the plugin menu/in
 A usage example can be seen below:
 
 <p align="center">
-<img src="launch_simulation.gif">
+<img src="./launch_simulation.gif">
 </p>
 
 ![]( launch_simulation.gif)
