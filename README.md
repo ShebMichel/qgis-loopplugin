@@ -29,13 +29,19 @@ Once all layers are processed, json file and python script are created and then 
 If the plugin is availaible in QGIS plugin tabs launch it by clicking the Loop icon,
 in case, it is not available, select then Loop Processor from the plugin menu/installed
 
-A usage example can be seen below:
-<p align="center"
+A usage example can be seen below:*
+
+<p align="center">
+<img src="cut.gif">
+</p>
+
+
+
 ![til](https://github.com/ShebMichel/qgis-animated_gif/blob/main/launch_simulation.gif)
-/p>
 
 
-<img src="cut.gif" width="50%" height="50%"/>
+
+
 ### Set the project path
 
 - Select the Project Directory:
