@@ -6,6 +6,7 @@
 
 This plugin process various qgis layer such as a dtm raster, geology, fault and structure point layers.
 These various layers can be loaded using 4 ways for the dtm, while the others in two options.
+
 For example, we can load a dtm raster, using the following 4 options:
   - qgis : if selected, the plugin generate a list of layer in which the user will have to select one.
   - file : if selected, the plugin let you navigate to your local directory to select your file.
@@ -30,9 +31,11 @@ in case, it is not available, select then Loop Processor from the plugin menu/in
 
 A usage example can be seen below:
 
-<p align="center">
+<!-- <p align="center">
   <img src="launch_simulation.gif">
-</p>
+ --></p>
+
+![]( launch_simulation.gif)
 
 ### Set the project path
 
