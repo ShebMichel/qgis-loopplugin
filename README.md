@@ -61,7 +61,6 @@ A usage example of the automated results after the geology layer is loaded:*
 - Once (Save layer Params) is clicked, individual parameter in the combobox is saved and this is 
 	confirmed by the (Tick) button being selected.
 
- 
 
 <!--
 <p align="center">
@@ -89,7 +88,7 @@ A usage example of the automated results after the geology layer is loaded:*
 ### Future releases:
 
   * ROI = Region of interest.. A polygon cliping tool which will be used to crop data and save it as a new layer.
-  * HelpU: A feature attached to the help function in which the user can upload their own library.  
+  * HelpU: A feature attached to the help function in which the user can upload their own library. 
   * Verbose 1,2,3 
-  * Map2loop/LoopStructural loader To run Map2Loop using the generated json and py scripts.
+  * Map2loop/LoopStructural clicked.connect()
 
