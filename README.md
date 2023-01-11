@@ -63,9 +63,11 @@ A usage example of the automated results after the geology layer is loaded:*
 
  
 
-[//]: # <p align="center">
-[//]: # <img src="filter_geol_data.gif">
-[//]: # </p>
+<!--
+<p align="center">
+<img src="filter_geol_data.gif">
+</p>
+-->
 
 ### Repeat the process for Fault Polyline, Structure Point and DTM Layers
 
