@@ -31,7 +31,7 @@ in case, it is not available, select then Loop Processor from the plugin menu/in
 A usage example can be seen below:
 
 <p align="center">
-  <img src="launch_simulation.gif?raw=true">
+  <img src="launch_simulation.gif">
 </p>
 
 ### Set the project path
@@ -80,17 +80,14 @@ A usage example can be seen below:
 ### Create json and/or Py script
 
 - After the above is completed, click Save Config File to generate both "data.json" and "Run_test.py" in your Project Directory.
+  These output are then later used as input for Map2loop/LoopStructural.
 
 
-* From this point, the final output are data.json and Run_test.py available in your project directory can be used as input to Map2loop/LoopStructural software.
 
 ### Future releases:
 
-  *ROI = Region of interest.. A polygon cliping tool which will be used to crop data and save it as a new layer.
-
-  *HelpU: A feature attached to the help function in which the user can upload their own library.  
-
-  *Verbose 1,2,3 
-
-  *Map2loop/LoopStructural loader To run Map2Loop using the generated json and py scripts.
+  * ROI = Region of interest.. A polygon cliping tool which will be used to crop data and save it as a new layer.
+  * HelpU: A feature attached to the help function in which the user can upload their own library.  
+  * Verbose 1,2,3 
+  * Map2loop/LoopStructural loader To run Map2Loop using the generated json and py scripts.
 
