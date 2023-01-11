@@ -35,7 +35,6 @@ A usage example can be seen below:
 <img src="./launch_simulation.gif">
 </p>
 
-![]( launch_simulation.gif)
 
 ### Set the project path
 
