@@ -8,10 +8,10 @@ This plugin process various qgis layer such as a dtm raster, geology, fault and 
 These various layers can be loaded using 4 ways for the dtm, while the others in two options.
 
 For example, we can load a dtm raster, using the following 4 options:
-  - qgis : if selected, the plugin generate a list of layer in which the user will have to select one.
-  - file : if selected, the plugin let you navigate to your local directory to select your file.
-  - Aus  : if selected, the plugin will then select Geoscience Australia server address.
-  - Http : if selected, the plugin generate a QLineeditor where the user will enter their own server address, then save it.
+  - qgis: if selected, the plugin generate a list of layer in which the user will have to select one.
+  - file: if selected, the plugin let you navigate to your local directory to select your file.
+  - Aus : if selected, the plugin will then select Geoscience Australia server address.
+  - Http: if selected, the plugin generate a QLineeditor where the user will enter their own server address, then save it.
 However, only qgis and file options are active for the other type of layers.
 Once all layers are processed, json file and python script are created and then used to run Map2Loop as well as LoopStructural(Loop project).
 
@@ -31,9 +31,6 @@ in case, it is not available, select then Loop Processor from the plugin menu/in
 
 A usage example can be seen below:
 
-<!-- <p align="center">
-  <img src="launch_simulation.gif">
- --></p>
 
 ![]( launch_simulation.gif)
 
