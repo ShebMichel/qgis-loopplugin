@@ -32,6 +32,10 @@ in case, it is not available, select then Loop Processor from the plugin menu/in
 A usage example of the automated results after the geology layer is loaded:*
 
 <p align="center">
+<img src="plugin_structure_chart.gif">
+</p>
+
+<p align="center">
 <img src="https://github.com/ShebMichel/qgis-animated_gif/blob/main/launch_simulation.gif"/>
 </p>
 
