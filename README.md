@@ -27,7 +27,7 @@ Once all layers are processed, json file and python script are created and then 
 
 
 If the plugin is availaible in QGIS plugin tabs launch it by clicking the Loop icon,
-in case, it is not available, select then Loop Processor from the plugin menu/installed
+in case, it is not available, select then Loop Processor from the plugin menu/installed.
 
 
 The hierarchy chart that show the functional plugin flow through a program-parts (modules) and how they are related is shown below:*
