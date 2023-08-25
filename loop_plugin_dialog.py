@@ -149,7 +149,7 @@ class Loop_pluginDialog(QtWidgets.QDialog, FORM_CLASS):
         if map2loop_msg == QMessageBox.Yes:
             hide_map2loop_features(self.map2loop_label_list,self.map2loop_qline_list,True)
             self.map2loop_2.setText('Enter your name here')
-            self.map2loop_1.setText('130.95.198.44')
+            self.map2loop_1.setText('add_your_ip_adress')
             self.map2loop_3.setText(str(8000))
             self.map2loop_Ok_pushButton.clicked.connect(self.run_the_remote_service)
         else:
