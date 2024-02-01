@@ -132,7 +132,7 @@ A usage example of the automated results after the geology layer is loaded:*
   By selecting either **Yes**/ **No**, the local process data and configuration files are transmitted to the Docker server within a container using a WebSocket client.  
   Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the output_data_**stamptime** directory. 
   Note that the timestamp corresponds to the date and time when the data is received on your end.
-# 6. //RUN LoopStructural (3D Geological modelling)
+# 6. <!---RUN LoopStructural (3D Geological modelling)-->
 * coming soon
 # 7. //RUN LoopUI (Ensemble of model generators)
 * coming soon
