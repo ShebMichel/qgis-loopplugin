@@ -64,7 +64,8 @@ A usage example of the automated results after the geology layer is loaded:*
 </p>
 
 # 3. Loading the layers and project directory
-## 3.1. Set the project path
+
+## 3.1. Setting the project path into qgis workspace
 
 - Select the Project Directory:
    * Click the tool button (...) at the end of the QLineEdit widget.
@@ -72,7 +73,7 @@ A usage example of the automated results after the geology layer is loaded:*
    * Then, click Select Folder into the pop up window
    * Finally, the project directory is printed into the QLineEdit.
 
-## 3.2. Load geology Layer into qgis workspace
+## 3.2. Loading a geology layer into qgis workspace
 
 - Click into Geology to load the geology shapefile
 - Once loaded, automatically the multiple combobox will be filled with multiple variable names (Layer columns names).
@@ -88,8 +89,6 @@ A usage example of the automated results after the geology layer is loaded:*
   parameters.
 - Once (Save layer Params) is clicked, individual parameter in the combobox is saved and this is 
   confirmed by the (Tick) button being selected.
-
-
 
 ## 3.3. Repeat the process for Fault Polyline, Structure Point and DTM Layers
 
