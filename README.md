@@ -117,8 +117,8 @@ A usage example of the automated results after the geology layer is loaded:*
     * No  : remote server(i.e running the calculation remotely)
   
   * Yes 
-    * For local calculation, it is required to have Docker Desktop for window user. If not follow the link below to install and launch it
-      Click <a href="https://www.docker.com/products/docker-desktop/">[Click and select to install]</a>
+    * For local calculation, it is required to have Docker Desktop for window user. If not, 
+      Click <a href="https://www.docker.com/products/docker-desktop/">[Click and select to install]</a> and follow the instruction to install and launch the Docker Desktop app.
       Now launch your Docker Desktop, then go back to QGIS Plugin front end to click **Yes**.
       By clicking **Yes**, you are going to build your docker container so that your server is on the receive your pings and data.
       Just wait and relax so that the magic happen.
@@ -131,14 +131,8 @@ A usage example of the automated results after the geology layer is loaded:*
        ```
     then, go back to QGIS Plugin front end to click **No**. Just wait and relax so that the magic happen.
     
-  he output result are transferred to your local PC inside output_data.
   By sending either **Yes**/ **No** signal, the process data and configuration files are sent to the docker server inside the container using websocket client. 
-  Thereafter, the result outputs result are transferred to your local PC inside the output_data_**stamptime**. Note that stamptime is the date and time date are received on your end.
-   
-  * Once you click Run Map2Loop, you will have to click the below options:
-    Yes : remote calculation
-    No  : locally running the calculation
-  * For remote calculation, the output result are transferred to your local PC inside output_data.
+  Thereafter, the result outputs result are transferred to your local PC inside the output_data_**stamptime**. Note that stamptime is the date and time date are received on your end. 
 
 # 5. Create your Region Of Interest (ROI)
  A clipping tool used to crop data and save it as a new layer. The new layer is saved as yourfilename_clip.shp
