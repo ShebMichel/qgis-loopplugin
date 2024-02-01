@@ -46,7 +46,7 @@ Once done, you can follow on how to install loopplugin.
   Click <a href="https://github.com/Loop3D/qgis-loopplugin/archive/refs/heads/master.zip">[Download]</a> the github repository. Then using zip install method, zip the folder and upload it to QGIS using the plugin manager.
   More details about installing qgis plugin can be found here: [https://plugins.qgis.org/](https://plugins.qgis.org/)  
 
-# 1. How to run **loopplugin**?
+# 2. How to run **loopplugin**?
 
 If the plugin is availaible in QGIS plugin tabs launch it by clicking the Loop icon,
 in case, it is not available, select then Loop Processor from the plugin menu/installed.
@@ -63,8 +63,8 @@ A usage example of the automated results after the geology layer is loaded:*
 <img src="https://github.com/ShebMichel/qgis-animated_gif/blob/main/plugin_launch_v05.gif"/>
 </p>
 
-
-### Set the project path
+# 3. Loading the layers and project directory
+## 3.1. Set the project path
 
 - Select the Project Directory:
    * Click the tool button (...) at the end of the QLineEdit widget.
@@ -72,7 +72,7 @@ A usage example of the automated results after the geology layer is loaded:*
    * Then, click Select Folder into the pop up window
    * Finally, the project directory is printed into the QLineEdit.
 
-### Load geology Layer into qgis workspace
+## 3.2. Load geology Layer into qgis workspace
 
 - Click into Geology to load the geology shapefile
 - Once loaded, automatically the multiple combobox will be filled with multiple variable names (Layer columns names).
@@ -91,41 +91,30 @@ A usage example of the automated results after the geology layer is loaded:*
 
 
 
-### Repeat the process for Fault Polyline, Structure Point and DTM Layers
+## 3.3. Repeat the process for Fault Polyline, Structure Point and DTM Layers
 
 - Same process as the above.
 - For dtm raster, only load the layer as described above.  
   click the Save Layer Params because the data is saved automatically. 
 
-### Loading Fold Polyline and Min Deposit Point Layer
+## 3.4. Loading Fold Polyline and Min Deposit Point Layer
 
 - Hard coded for now..
 
-### Create Configuration File(.json and .py)
+# 4. Configuration File and processed data
 
-- After the buttons Geology, Fault, Structure and DTM are all checked and also the Project Directory is defined, 
-  click Save Config File to generate both "data.json" and "Run_test.py" in the newly created folder (process_source_data_timestamp) inside your Project Directory.
+- After the buttons **Geology**, **Fault**, **Structure** and **DTM** are all checked and also the **Project Directory** is defined, 
+  click **Save Config File** to generate both "data.json" and "Run_test.py" in the newly created folder (process_source_data_timestamp) inside your Project Directory.
 - Also inside the Project Directory, the output_data_timestamp folder, where the results of map2loop will locally be stored.
 - The process_source_data contain the newly saved shapefile/geojson containing only the parameters selected during layer processing.
-  These outputs are then used as input for Map2loop or LoopStructural modelling engine. 
-  
+  These outputs are then used as input for map2loop or LoopStructural modelling engine. 
 
-### ROI (Region Of Interest)
- A clipping tool used to crop data and save it as a new layer. The new layer is saved as yourfilename_clip.shp
- Once ROI is pressed, if no layer is available on the Qgis layer panel, you will:
- * be prompted to load a layer from your local directory.
-Once you have loaded your layers, by clicking ROI, the following happen:
- * A scratch template layer is generated and also the drwaing feature are toggle.
- * You need now to draw your ROI and continue by following the prompt from the plugin interface
- 
- Once you click clipped_your_layer, all the loaded layer should be clipped and add to the panel.
-
-### RUN map2loop
+# 5. RUN map2loop (map deconstruction)
   In this feature, you have will have to select the environment in which your calculations will be running.
   
-  * Once you click **Run map2loop**, you will have to select one of the below options:
-    Yes : local server (i.e running docker locally)
-    No  : remote server(i.e running the calculation remotely)
+  Once you click **Run map2loop**, you will have to select one of the below options:
+    * Yes : local server (i.e running docker locally)
+    * No  : remote server(i.e running the calculation remotely)
     
   * 1. For remote calculation, the output result are transferred to your local PC inside output_data.
   To do so, once Run map2loop is selected, a new pop-up window is poulated with the possibility of running locally or on a server your calculations.
@@ -142,7 +131,16 @@ Once you have loaded your layers, by clicking ROI, the following happen:
     Yes : remote calculation
     No  : locally running the calculation
   * For remote calculation, the output result are transferred to your local PC inside output_data.
-    
+
+# 5. Create your Region Of Interest (ROI)
+ A clipping tool used to crop data and save it as a new layer. The new layer is saved as yourfilename_clip.shp
+ Once ROI is pressed, if no layer is available on the Qgis layer panel, you will:
+ * be prompted to load a layer from your local directory.
+Once you have loaded your layers, by clicking ROI, the following happen:
+ * A scratch template layer is generated and also the drwaing feature are toggle.
+ * You need now to draw your ROI and continue by following the prompt from the plugin interface
+ 
+ Once you click clipped_your_layer, all the loaded layer should be clipped and add to the panel.
 
 ### Future releases:
 
