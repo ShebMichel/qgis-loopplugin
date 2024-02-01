@@ -75,30 +75,28 @@ A usage example of the automated results after the geology layer is loaded:*
 
 ## 3.2. Loading a geology layer into qgis workspace
 
-- Click into Geology to load the geology shapefile
-- Once loaded, automatically the multiple combobox will be filled with multiple variable names (Layer columns names).
--  ``` Check that the filled values are correctly selected in the combobox.```
-- Also a text label appear on top of QLineEditor for example for the top one, Enter sill text, 
-  while the botton will show (Enter intrusion text). In these QLineEditor, default values filled i.e sill=sill. However, you can rewrite the text that correspond to your geology attribute.
-
-- For example:
-   * Rocktype 1* --------> rocktype1 
-   * Min Age*    --------> min_age_ma
-
-- After every combobox selected, the user click (Save Layer Params) to save their geology  
-  parameters.
-- Once (Save layer Params) is clicked, individual parameter in the combobox is saved and this is 
-  confirmed by the (Tick) button being selected.
+* Click **Geology** layer to load the geology polygon (shapefile),
+  * Once loaded, automatically the multiple combobox will be filled with multiple variable names (Layer columns names).
+  ``` **Check that the filled values are correctly selected in the combobox.**```
+  * Also, **sill** and **Intrusion **intrusive** are respectively the default for **Sill Text:** and **Intrusion Text:** Qtext labels.
+  However, if you have the field knowledge, please edit it to the text that correspond to your geology attribute.
+* In mapping the labels to your combobox, for example one can use the below example:
+   * Rocktype 1* --------> rocktype1   (i.e: select the column header value from the layer table drop-down that corresponds to the Rocktype 1 attribute)
+   * Min Age*    --------> min_age_ma  (i.e: select the column header value from the layer table drop-down that corresponds to the Min Age attribute)
+* Once happy with all the parameters selected, to save the data, click **Fault** layer so that the Qcheckbox next to **geology** to be selected.
+  Note that, you can also click **Structure** layer to for the above checkbox tick.
+ 
 
 ## 3.3. Repeat the process for Fault Polyline, Structure Point and DTM Layers
 
-- Same process as the above.
-- For dtm raster, only load the layer as described above.  
-  click the Save Layer Params because the data is saved automatically. 
+* Same process as the above for both **Fault** and **Structure** layers.
+* For **DTM** raster, this layer is activated only when the above 3 layers are selected.
+  However, when loaded no parameter is required to map attributes, the checkbox is ticked at load.  
+
 
 ## 3.4. Loading Fold Polyline and Min Deposit Point Layer
 
-- Hard coded for now..
+* Hard coded for now (future releases).
 
 # 4. Configuration File and processed data
 
@@ -109,10 +107,9 @@ A usage example of the automated results after the geology layer is loaded:*
   These outputs are then used as input for map2loop or LoopStructural modelling engine. 
 
 # 5. RUN map2loop (map deconstruction)
-  In this feature, you have will have to select the environment in which your calculations will be running.
+  This module will ask you to select the environment in which your calculations will be running (i.e: remote or personal computer) .
   
-  Once you click **Run map2loop**, you will have to select one of the below options:
-  
+  Click **Run map2loop**, then the option below will be prompted:  
     * Yes : local server (i.e running docker locally)
     * No  : remote server(i.e running the calculation remotely)
   
@@ -131,25 +128,35 @@ A usage example of the automated results after the geology layer is loaded:*
        ```
     then, go back to QGIS Plugin front end to click **No**. Just wait and relax so that the magic happen.
     
-  By sending either **Yes**/ **No** signal, the process data and configuration files are sent to the docker server inside the container using websocket client. 
-  Thereafter, the result outputs result are transferred to your local PC inside the output_data_**stamptime**. Note that stamptime is the date and time date are received on your end. 
-
-# 5. Create your Region Of Interest (ROI)
- A clipping tool used to crop data and save it as a new layer. The new layer is saved as yourfilename_clip.shp
- Once ROI is pressed, if no layer is available on the Qgis layer panel, you will:
- * be prompted to load a layer from your local directory.
-Once you have loaded your layers, by clicking ROI, the following happen:
- * A scratch template layer is generated and also the drwaing feature are toggle.
- * You need now to draw your ROI and continue by following the prompt from the plugin interface
+  By selecting either **Yes**/ **No**, the local process data and configuration files are transmitted to the Docker server within a container using a WebSocket client.  
+  Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the output_data_**stamptime** directory. 
+  Note that the timestamp corresponds to the date and time when the data is received on your end.
+# 6. RUN LoopStructural (3D Geological modelling)
+# 7. RUN LoopUI (Ensemble of model generators)
+# 8. RUN TomoFast (3D Geophysical modelling)
+# 9. Extra modules:
+  This section offers optional features for 3D modeling. Users can leverage the clipping tool for data manipulation to select their area of interest.
+## 9.1. Create your Region Of Interest (ROI)
+ Utilize the **ROI** as your clipping tool to trim data and save it as a new layer. The resulting layer is stored as **yourfilename**_clip.shp in your project directory.
+ To ensure successful use, please make sure to provide the **Project Directory** path in its QlineEdit. 
+ When **ROI** is clicked, you and no layers are available in the QGIS layer panel, you will:
  
- Once you click clipped_your_layer, all the loaded layer should be clipped and add to the panel.
-
-### Future releases:
+    * Be prompted to load a layer from two options.
+      * Yes : to create your ROI 
+        * If **Yes** a newly temp_layer will be created into your QGIS layer panel. 
+        * While the drawing tools are toggle into QGIS, now manually draw your ROI,
+        * Once drawing is done click **OK**, and finally click **clip your layer** to generate roi data
+      * No  : to locally upload your layer only when the 4 required layers are loaded 
+       **(upgrade coming to make it independent)**
+    * Once you click clipped_your_layer, all the loaded layer should be clipped and add to the panel.
+    
+## 9.2. HelpU
+  A documentation database that capture geological layer header column names as well as sill and intrusion text for example (coming soon for future releases.
+# 10. Future releases:
 
   * REQUIRED: This will be embedded during plugin installation into the next release.
   * LoopStructural.clicked.connect()
   * LoopUI.clicked.connect()
   * TomoFast.clicked.connect()
   * HelpU: A feature attached to the help function in which the user can upload their own library.
-  * Verbose 1,2,3
 
