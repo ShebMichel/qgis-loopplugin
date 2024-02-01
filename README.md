@@ -118,8 +118,7 @@ Once you have loaded your layers, by clicking ROI, the following happen:
     Yes : local server (i.e running docker locally)
     No  : remote server(i.e running the calculation remotely)
     
-  ** Yes
-  * For remote calculation, the output result are transferred to your local PC inside output_data.
+  * 1. For remote calculation, the output result are transferred to your local PC inside output_data.
   To do so, once <Run map2loop> is selected, a new pop-up window is poulated with the possibility of running locally or on a server your calculations.
   - Before using this feature, you need to clone/download map2loop-server repository and then run the server package (more details on the repository).
     To do so or to turn on the server, open the terminal in the root directory of this repository and run:  
