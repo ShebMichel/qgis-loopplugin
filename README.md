@@ -99,12 +99,12 @@ A usage example of the automated results after the geology layer is loaded:*
 
 * Hard coded for now (future releases).
 
-# 4. Configuration File and processed data
+# 4. Output/Input: Configuration file and processed data
 
-- After the buttons **Geology**, **Fault**, **Structure** and **DTM** are all checked and also the **Project Directory** is defined, 
+* After the buttons **Geology**, **Fault**, **Structure** and **DTM** are all checked and also the **Project Directory** is defined, 
   click **Save Config File** to generate both "data.json" and "Run_test.py" in the newly created folder (process_source_data_timestamp) inside your Project Directory.
-- Also inside the Project Directory, the output_data_timestamp folder, where the results of map2loop will locally be stored.
-- The process_source_data contain the newly saved shapefile/geojson containing only the parameters selected during layer processing.
+* Also inside the Project Directory, the output_data_timestamp folder, where the results of map2loop will locally be stored.
+* The process_source_data contain the newly saved shapefile/geojson containing only the parameters selected during layer processing.
   These outputs are then used as input for map2loop or LoopStructural modelling engine. 
 
 # 5. RUN map2loop (map deconstruction)
@@ -132,9 +132,12 @@ A usage example of the automated results after the geology layer is loaded:*
   By selecting either **Yes**/ **No**, the local process data and configuration files are transmitted to the Docker server within a container using a WebSocket client.  
   Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the output_data_**stamptime** directory. 
   Note that the timestamp corresponds to the date and time when the data is received on your end.
-# 6. RUN LoopStructural (3D Geological modelling)
-# 7. RUN LoopUI (Ensemble of model generators)
-# 8. RUN TomoFast (3D Geophysical modelling)
+# 6. //RUN LoopStructural (3D Geological modelling)
+* coming soon
+# 7. //RUN LoopUI (Ensemble of model generators)
+* coming soon
+# 8. //RUN TomoFast (3D Geophysical modelling)
+* coming soon
 # 9. Extra modules:
   This section offers optional features for 3D modeling. Users can leverage the clipping tool for data manipulation to select their area of interest.
 ## 9.1. Create your Region Of Interest (ROI)
