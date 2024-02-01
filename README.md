@@ -39,11 +39,12 @@ If you have websocket installed, it is okay, otherwise, it will install it to yo
 Once done, you can follow on how to install loopplugin.
 
 ## 1.2. How to install **loopplugin**?
-  You will need a python package manager, [see here](https://docs.anaconda.com/anaconda/install/index.html)), as well as Python ≥ 3.6.
-  You can git clone this plugin from the Loop3D repository with the following link:
+  You will need a python package manager [see here](https://docs.anaconda.com/anaconda/install/index.html).
+  Clone the qgis plugin repository from the Loop3D repository with the following link:
   [https://github.com/Loop3D/qgis-loopplugin](https://github.com/Loop3D/qgis-loopplugin)
-
-  Click <a href="https://github.com/Loop3D/qgis-loopplugin/archive/refs/heads/master.zip">[Download]</a> the github repository. Then using zip install method, zip the folder and upload it to QGIS using the plugin manager.
+  or from the <a href="https://github.com/Loop3D/qgis-loopplugin/archive/refs/heads/master.zip">[Download]</a> button. 
+  To install from the QGIS Plugin Manager via ZIP, navigate to **Plugins**--> **Manage and Install Plugins**-->**Install from ZIP**, 
+  input the path to the zipped folder, and click **Install Plugin**.
   More details about installing qgis plugin can be found here: [https://plugins.qgis.org/](https://plugins.qgis.org/)  
 
 # 2. How to run **loopplugin**?
