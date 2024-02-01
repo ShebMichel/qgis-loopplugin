@@ -113,8 +113,8 @@ A usage example of the automated results after the geology layer is loaded:*
   
   Once you click **Run map2loop**, you will have to select one of the below options:
   
-    * Yes : local server (i.e running docker locally)
-    * No  : remote server(i.e running the calculation remotely)
+    * **Yes** : local server (i.e running docker locally)
+    * **No**  : remote server(i.e running the calculation remotely)
     
   * 1. For remote calculation, the output result are transferred to your local PC inside output_data.
   To do so, once Run map2loop is selected, a new pop-up window is poulated with the possibility of running locally or on a server your calculations.
