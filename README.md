@@ -17,7 +17,13 @@ However, only **qgis** and **File** Qcheckbox options are active for the other t
 Once a project directory and all layers with their Qcheckbox selected, a json and python files are created, and a processed data folder with only columns that are required for further calculations. 
 All the outputs are then used as the input for map deconstruction (**run map2loop**) and/or for 3D modelling module(**LoopStructural**).
 
-## REQUIRED
+# 1. Environment Installation
+## 1.1. Required
+This plugin will requires the below dependencies: 
+- QGIS version: 3.28.4-Firenze
+- Qt version  : 5.15.3
+- Python 3.9.5
+
 Before you download this plugin, please execute the below code on your QGIS Python console.
 
 ```bash
@@ -32,7 +38,7 @@ Before you download this plugin, please execute the below code on your QGIS Pyth
 If you have websocket installed, it is okay, otherwise, it will install it to your QGIS ENV PATH. 
 Once done, you can follow on how to install loopplugin.
 
-## How to install **loopplugin**?
+## 1.2. How to install **loopplugin**?
   You will need a python package manager, [see here](https://docs.anaconda.com/anaconda/install/index.html)), as well as Python ≥ 3.6.
   You can git clone this plugin from the Loop3D repository with the following link:
   [https://github.com/Loop3D/qgis-loopplugin](https://github.com/Loop3D/qgis-loopplugin)
@@ -40,7 +46,7 @@ Once done, you can follow on how to install loopplugin.
   Click <a href="https://github.com/Loop3D/qgis-loopplugin/archive/refs/heads/master.zip">[Download]</a> the github repository. Then using zip install method, zip the folder and upload it to QGIS using the plugin manager.
   More details about installing qgis plugin can be found here: [https://plugins.qgis.org/](https://plugins.qgis.org/)  
 
-## How to run **loopplugin**?
+# 1. How to run **loopplugin**?
 
 If the plugin is availaible in QGIS plugin tabs launch it by clicking the Loop icon,
 in case, it is not available, select then Loop Processor from the plugin menu/installed.
