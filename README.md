@@ -129,11 +129,11 @@ A usage example of the automated results after the geology layer is loaded:*
        ```bash
        docker compose up --build
        ```
-    then go back to QGIS Plugin front end to click **No**. Just wait and relax so that the magic happen.
+    then, go back to QGIS Plugin front end to click **No**. Just wait and relax so that the magic happen.
     
   he output result are transferred to your local PC inside output_data.
-  By sending either ** Yes**/**No** signal, the process data and configuration files are sent to the docker server inside the container using websocket client. 
-  Thereafter, the result outputs result are transferred to your local PC inside the output_data_stamptime. Note that stamptime is the date and time date are received on your end.
+  By sending either **Yes**/ **No** signal, the process data and configuration files are sent to the docker server inside the container using websocket client. 
+  Thereafter, the result outputs result are transferred to your local PC inside the output_data_**stamptime**. Note that stamptime is the date and time date are received on your end.
    
   * Once you click Run Map2Loop, you will have to click the below options:
     Yes : remote calculation
