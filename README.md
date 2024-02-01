@@ -115,20 +115,25 @@ A usage example of the automated results after the geology layer is loaded:*
   
     * Yes : local server (i.e running docker locally)
     * No  : remote server(i.e running the calculation remotely)
-    
-    * Yes 
-       * For local calculation, it is required to have Docker Desktop for window user. If not follow the link below to install and launch it
-          Click <a href="https://www.docker.com/products/docker-desktop/">[Click and select to install]</a>
-       * 1. For remote calculation, the output result are transferred to your local PC inside output_data.
-  To do so, once Run map2loop is selected, a new pop-up window is poulated with the possibility of running locally or on a server your calculations.
-  - Before using this feature, you need to clone/download map2loop-server repository and then run the server package (more details on the repository).
-    To do so or to turn on the server, open the terminal in the root directory of this repository and run:  
-   
-  ```bash
-   docker compose up --build
-  ```
   
-  Since your server is running, you can now process your data and build a map deconstruction, by sending the process data inside the container/server using websocket client. This is done by a single click of the module 'Run map2loop' once activated. 
+  * Yes 
+    * For local calculation, it is required to have Docker Desktop for window user. If not follow the link below to install and launch it
+      Click <a href="https://www.docker.com/products/docker-desktop/">[Click and select to install]</a>
+      Now launch your Docker Desktop, then go back to QGIS Plugin front end to click **Yes**.
+      By clicking **Yes**, you are going to build your docker container so that your server is on the receive your pings and data.
+      Just wait and relax so that the magic happen.
+
+  * No
+    * For remote calculation, ensure that you have the **map2loop-server** is running on your remote machine.
+    * Otherwise, please turn on the server, just open the terminal in the root directory of the map2loop-server clone repository and run:
+       ```bash
+       docker compose up --build
+       ```
+    then go back to QGIS Plugin front end to click **No**. Just wait and relax so that the magic happen.
+    
+  he output result are transferred to your local PC inside output_data.
+  By sending either ** Yes**/**No** signal, the process data and configuration files are sent to the docker server inside the container using websocket client. 
+  Thereafter, the result outputs result are transferred to your local PC inside the output_data_stamptime. Note that stamptime is the date and time date are received on your end.
    
   * Once you click Run Map2Loop, you will have to click the below options:
     Yes : remote calculation
