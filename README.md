@@ -115,12 +115,12 @@ Once you have loaded your layers, by clicking ROI, the following happen:
 ### RUN map2loop
   In this feature, you have will have to select the environment in which your calculations will be running.
   
-  * Once you click -Run map2loop-, you will have to select one of the below options:
+  * Once you click **Run map2loop**, you will have to select one of the below options:
     Yes : local server (i.e running docker locally)
     No  : remote server(i.e running the calculation remotely)
     
   * 1. For remote calculation, the output result are transferred to your local PC inside output_data.
-  To do so, once <Run map2loop> is selected, a new pop-up window is poulated with the possibility of running locally or on a server your calculations.
+  To do so, once Run map2loop is selected, a new pop-up window is poulated with the possibility of running locally or on a server your calculations.
   - Before using this feature, you need to clone/download map2loop-server repository and then run the server package (more details on the repository).
     To do so or to turn on the server, open the terminal in the root directory of this repository and run:  
    
