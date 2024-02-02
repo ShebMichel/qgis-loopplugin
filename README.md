@@ -132,9 +132,11 @@ A usage example of the automated results after the geology layer is loaded:*
   By selecting either **Yes**/ **No**, the local process data and configuration files are transmitted to the Docker server within a container using a WebSocket client.  
   Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the output_data_**stamptime** directory. 
   Note that the timestamp corresponds to the date and time when the data is received on your end.
-  # 5.1. Turn ON and OFF your docker container
-After your results ouptut are reviewed or you are done sending data back to the server, you can use the **Docker** QPushButton to either turn ON/OFF.
-For now, Only use it to turn OFF, but if its already on, nothing will happen, however, in the next release, when selecting where to push the calculation, the user will be asked to go and click the **Docker** button.
+  
+  ## 5.1. Turn ON and OFF your docker container
+After the result ouptuts are reviewed or you are done sending back and forth the data to the server, click **Docker** QPushButton to either turn ON/OFF.
+
+For now, Only use it to turn OFF, but if its already on, it will restart the docker. In the next release, the user will be asked to go and click **Docker** button before sending the data for calculation into the docker container.
   
 # 6. <!---RUN LoopStructural (3D Geological modelling)-->
  coming soon
