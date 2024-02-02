@@ -116,9 +116,9 @@ A usage example of the automated results after the geology layer is loaded:*
   
   * Yes 
     * For local calculation, it is required to have Docker Desktop for window user. If not, 
-      Click <a href="https://www.docker.com/products/docker-desktop/">[Click and select to install]</a> and follow the instruction to install and launch the Docker Desktop app.
-      Now launch your Docker Desktop, then go back to QGIS Plugin front end to click **Yes**.
-      By clicking **Yes**, you are going to build your docker container so that your server is on the receive your pings and data.
+      <a href="https://www.docker.com/products/docker-desktop/">[Click]</a> to follow the install instruction and launch the Docker Desktop app.
+      Once the Docker Desktop launched, go back to QGIS Plugin front-end to click **Yes**.
+      By doing so, you will virtually build your docker container so that your server can receive your pings and data.
       Just wait and relax so that the magic happen.
 
   * No
@@ -132,6 +132,10 @@ A usage example of the automated results after the geology layer is loaded:*
   By selecting either **Yes**/ **No**, the local process data and configuration files are transmitted to the Docker server within a container using a WebSocket client.  
   Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the output_data_**stamptime** directory. 
   Note that the timestamp corresponds to the date and time when the data is received on your end.
+  # 5.1. Turn ON and OFF your docker container
+After your results ouptut are reviewed or you are done sending data back to the server, you can use the **Docker** QPushButton to either turn ON/OFF.
+For now, Only use it to turn OFF, but if its already on, nothing will happen, however, in the next release, when selecting where to push the calculation, the user will be asked to go and click the **Docker** button.
+  
 # 6. <!---RUN LoopStructural (3D Geological modelling)-->
  coming soon
 # 7. <!---RUN LoopUI (Ensemble of model generators)-->
