@@ -18,11 +18,12 @@ Once a project directory and all layers with their Qcheckbox selected, a json an
 All the outputs are then used as the input for map deconstruction (**run map2loop**) and/or for 3D modelling module(**LoopStructural**).
 
 # 1. Environment Installation
-## 1.1. Required
+## 1.1. Package Required
 This plugin will requires the below dependencies: 
 - QGIS version: 3.28.4-Firenze
 - Qt version  : 5.15.3
 - Python 3.9.5
+- Docker Desktop version 4.26.1 (131620) or higher
 
 Before you download this plugin, please execute the below code on your QGIS Python console.
 
