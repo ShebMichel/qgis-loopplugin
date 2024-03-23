@@ -88,11 +88,16 @@ A usage example of the automated results after the geology layer is loaded:*
 
 # 4. Output/Input: Configuration file and processed data
 
-* After the buttons **Geology**, **Fault**, **Structure** and **DTM** are all checked and also the **Project Directory** is defined, 
-  click **Save Config File** to generate both "data.json" and "Run_test.py" in the newly created folder (process_source_data_timestamp) inside your Project Directory.
-* Also inside the Project Directory, the output_data_timestamp folder, where the results of map2loop will locally be stored.
-* The process_source_data contain the newly saved shapefile/geojson containing only the parameters selected during layer processing.
-  These outputs are then used as input for map2loop or LoopStructural modelling engine. 
+* Once the **Project Directory** is defined, and all the **Geology**, **Fault**, **Structure** and **DTM** layers checked, 
+  click **Save Config File** to generate both "data.json" and "Run_test.py" in Project Directory/process_source_data_timestamp/.
+* There are more 4 folders to expect insode your project directory:
+   - for map2loop: process_source_data_timestamp and output_data_timestamp folder.
+     - The process_source_data_timestamp: contain the newly saved shapefile/geojson with the only selected parameters during layer processing.
+     - output_data_timestamp: contain the map2loop results locally be stored in your pc.
+   - for loopstructural: loopstructural_source_data_timestamp and loopostructural_output_data_timestamp
+     - loopstructural_source_data_timestamp: processed data for loop algorith 
+     - loopostructural_output_data_timestamp: result data local storage
+ 
 
 # 5. RUN map2loop (map deconstruction)
   This module will ask you to select the environment in which your calculations will be running (i.e: remote or personal computer) .
