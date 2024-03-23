@@ -140,10 +140,11 @@ For now, Only use it to turn OFF, but if its already on, it will restart the doc
   Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the loopstructural_output_data_**stamptime** 
   directory.  Note, unlike in Map2loop, here the processed data which are transferred to the server are saved into a newly created folder loopstructural_source_data_**stamptime** 
 
-# 7. <!---RUN LoopUI (Ensemble of model generators)-->
+# 7. RUN LoopUI (Ensemble of model generators)
  coming soon
-# 8. <!---RUN TomoFast (3D Geophysical modelling)-->
+# 8. RUN TomoFast (3D Geophysical modelling)
  coming soon
+ <!---RUN TomoFast (3D Geophysical modelling)-->
 # 9. Extra modules:
   This section offers optional features for 3D modeling. Users can leverage the clipping tool for data manipulation to select their area of interest.
 ## 9.1. Create your Region Of Interest (ROI)
@@ -165,7 +166,6 @@ For now, Only use it to turn OFF, but if its already on, it will restart the doc
 # 10. Future releases:
 
   * REQUIRED: This will be embedded during plugin installation into the next release.
-  * LoopStructural.clicked.connect()
   * LoopUI.clicked.connect()
   * TomoFast.clicked.connect()
   * HelpU: A feature attached to the help function in which the user can upload their own library.
