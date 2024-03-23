@@ -25,20 +25,6 @@ This plugin will requires the below dependencies:
 - Python 3.9.5
 - Docker Desktop version 4.26.1 (131620) or higher
 
-Before you download this plugin, please execute the below code on your QGIS Python console.
-
-```bash
-  # Check if websocket module exist:
-  try:
-      import websockets
-      print('websockets is available')
-  except:
-      subprocess.run('pip install websockets')
-      print('websockets is not available')
-```
-If you have websocket installed, it is okay, otherwise, it will install it to your QGIS ENV PATH. 
-Once done, you can follow on how to install loopplugin.
-
 ## 1.2. How to install **loopplugin**?
   You will need a python package manager [see here](https://docs.anaconda.com/anaconda/install/index.html).
   Clone the qgis plugin repository from the Loop3D repository with the following link:
@@ -118,13 +104,11 @@ A usage example of the automated results after the geology layer is loaded:*
   * Yes 
     * For local calculation, it is required to have Docker Desktop for window user. If not, 
       <a href="https://www.docker.com/products/docker-desktop/">[Click]</a> to follow the install instruction and launch the Docker Desktop app.
-      Once the Docker Desktop launched, go back to QGIS Plugin front-end to click **Yes**.
-      By doing so, you will virtually build your docker container so that your server can receive your pings and data.
-      Just wait and relax so that the magic happen.
+      Once the Docker Desktop launched, go back to QGIS Plugin front-end to click **Yes**. Then wait and relax so that the magic happen.
 
   * No
-    * For remote calculation, ensure that you have the **map2loop-server** is running on your remote machine.
-    * Otherwise, please turn on the server, just open the terminal in the root directory of the map2loop-server clone repository and run:
+    * For remote calculation, ensure that you have the **map2loop-server** running on your remote machine.
+    * Otherwise, please turn on the server, just open the terminal in the root directory of the clone map2loop-server repository and run:
        ```bash
        docker compose up --build
        ```
@@ -139,8 +123,18 @@ After the result ouptuts are reviewed or you are done sending back and forth the
 
 For now, Only use it to turn OFF, but if its already on, it will restart the docker. In the next release, the user will be asked to go and click **Docker** button before sending the data for calculation into the docker container.
   
-# 6. <!---RUN LoopStructural (3D Geological modelling)-->
- coming soon
+# 6. RUN LoopStructural (3D Geological modelling)
+ This module will ask you to select the environment in which your calculations will be running (i.e: remote or personal computer) .
+  
+  Click **LoopStructural**, then the option below will be prompted:  
+    * Yes : local server (i.e running docker locally)
+    * No  : remote server(i.e running the calculation remotely)
+   The rest is as mentionned in the Run Map2loop section. If succesfull, then wait and relax so that the magic happen.
+    
+  By selecting either **Yes**/ **No**, the local process data and configuration files are transmitted to the Docker server within a container using a WebSocket client.  
+  Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the loopstructural_output_data_**stamptime** 
+  directory.  Note, unlike in Map2loop, here the processed data which are transferred to the server are saved into a newly created folder loopstructural_source_data_**stamptime** 
+
 # 7. <!---RUN LoopUI (Ensemble of model generators)-->
  coming soon
 # 8. <!---RUN TomoFast (3D Geophysical modelling)-->
