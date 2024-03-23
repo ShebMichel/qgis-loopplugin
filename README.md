@@ -135,11 +135,9 @@ For now, Only use it to turn OFF, but if its already on, it will restart the doc
     * Yes : local server (i.e running docker locally)
     * No  : remote server(i.e running the calculation remotely)
    The rest is as mentionned in the Run Map2loop section. If succesfull, then wait and relax so that the magic happen.
-    
-  By selecting either **Yes**/ **No**, the local process data and configuration files are transmitted to the Docker server within a container using a WebSocket client.  
-  Subsequently, multiple batch calculations are performed until completion. Afterward, the resulting outputs are transferred to your local PC inside the loopstructural_output_data_**stamptime** 
-  directory.  Note, unlike in Map2loop, here the processed data which are transferred to the server are saved into a newly created folder loopstructural_source_data_**stamptime** 
-
+## 6.1. 3D:: Vizualisation
+This module is enabled only when the loopstructural calculation engine is completed. 
+Once active, if clicked, it will populate the 3D visualization of the model on your defaul browser. 
 # 7. RUN LoopUI (Ensemble of model generators)
  coming soon
 # 8. RUN TomoFast (3D Geophysical modelling)
