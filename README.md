@@ -3,6 +3,19 @@
 ## Overview
 This plugin provides a comprehensive workflow for managing and processing geological data within QGIS. It facilitates the preparation, configuration, and integration of geological, fault, and structural data for 3D geological modeling.
 
+## Requirements
+### Environment
+- QGIS>=3.38.1 (Grenoble)
+- Access to server environments (Docker, GCP, AWS, or Azure) for the Run module
+- Install map2loop via OSGeo4W shell (`pip install map2loop`)
+
+### Data
+In order to run map2loop you will need the following input files:
+1. Polygon shapefile containing your lithologies
+2. LineString shapefile containing your linear features (e.g. faults)
+3. Point data shapefile containing orientation data
+4. Digital Terain Model (DTM)
+
 ## Features
 - Multiple data loading options (shapefile, DTM, JSON)
 - Coordinate reference system management
@@ -53,17 +66,12 @@ This plugin provides a comprehensive workflow for managing and processing geolog
 | Save Configuration | - **m2l Output**: Type the name of your Map2loop output folder (default: `m2l_output`) <br>- **l2s Output**: Type the name of your LoopStructural output folder (default: `m2l_output`).<br>- Click <Save Configuration> to save all configuration parameters into data.json. |
 | Preprocessor | Prepares and processes raw geological data and create new shapefile data for modelling. Only the new field selected above will be saved in the new shape files.|
 | Map2loop | Extracts and processes geological data from GIS sources. <br>- **Minimum Fault Length**: Minimum value with default=5000.0m,<br>- **Geology Sampler Spacing**: Sampling resolution with default=200.0m,<br>- **Fault Sampler Spacing**: Sampling resolution with default:200.0m, <br>- **Base**: Map base value  with default=-3200m, <br>- **Top**: Map top value with default=1200m, <br>- **MinX** and **MaxX**: minimun and maximun X-value, <br>- **MinY** and **MaxY**: minimun and maximun Y-value. <br> These values are automatically populated, check and edit using your expertise. |
-| LoopStructural | Used for 3D geological modeling, integrating structural and geological data. Select the following server <br>- DOCKER: Docker server, GCP: Google Cloud Server, AWS: Amazon Web Server, and AZURE: Microsoft Cloud Server. Choose the server availaible for your own case.|
+| LoopStructural | Used for 3D geological modeling, integrating structural and geological data. Select the following server <br>- **DOCKER**: Docker server, <br>- **GCP**: Google Cloud Server, <br>- **AWS**: Amazon Web Server, <br>- **AZURE**: Microsoft Cloud Server. Choose the server availaible for your own case.|
 | 3D PLOT | Used to visualize the result of loopStructural 3D modelling.|
 
 ## Server Environments
 The Run tab supports multiple server environments:
-- Docker 
-<br>For windows machine, you need to have Docker Desktop Launch
-<br>If using remote machine without Docker Desktop, clone the following (LINK goe here: ) and cd to the folder and run `docker compose up --build`
-<br>- GCP (Google Cloud Platform)
-<br>- AWS (Amazon Web Services)
-<br>- Azure (Microsoft Azure)
+- Docker <br>For windows machine, you need to have Docker Desktop Launch <br>If using remote machine without Docker Desktop, clone the following (LINK goe here: ) and cd to the folder and run `docker compose up --build`<br>- GCP (Google Cloud Platform)<br>- AWS (Amazon Web Services)<br>- Azure (Microsoft Azure)
 
 ## Workflow
 1. Configure input data and parameters in the Configuration Tab
@@ -75,15 +83,4 @@ The Run tab supports multiple server environments:
 ## Support
 For issues or questions, please refer to the documentation or open an issue in this repository.
 
-## Requirements
-### Environment
-- QGIS>=3.38.1 (Grenoble)
-- Access to server environments (Docker, WSL, AWS, or Azure) for the Run module
-- Install map2loop via OSGeo4W shell (`pip install map2loop`)
-### Data
-In order to run map2loop you will need the following input files:
 
-1. Polygon shapefile containing your lithologies
-2. LineString shapefile containing your linear features (e.g. faults)
-3. Point data shapefile containing orientation data
-4. Digital Terain Model (DTM)
