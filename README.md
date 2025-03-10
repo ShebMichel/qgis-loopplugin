@@ -51,15 +51,8 @@ This plugin provides a comprehensive workflow for managing and processing geolog
 | Feature | Description |
 |---------|-------------|
 | Save Configuration | - **m2l Output**: Type the name of your Map2loop output folder (default: `m2l_output`) <br>- **l2s Output**: Type the name of your LoopStructural output folder (default: `m2l_output`).<br>- Click <Save Configuration> to save all configuration parameters into data.json. |
-| Preprocessor | Prepares and processes raw geological data and and create new shapefile data for modelling. Only the new field selected above will be saved in the new shape files.|
-| Map2loop | Extracts and processes geological data from GIS sources. <br>- **Run MAP2LOOP parameters**:<br>- - Minimum Fault Length: Set the minimum length for faults (default: 5 km / 5000.0 m),
-<br>- Geology Sampler Spacing: Define the sampling resolution for geological formations (default: 200.0 m),
-<br>- Fault Sampler Spacing: Specify the sampling resolution for fault structures (default: 200.0 m), 
-<br>- Base: map base value (default=-3200), 
-<br>- Top: The elevation value (default=1200), 
-<br>- MinX and MaxX: minimun and maximun X-value, 
-<br>- MinY and MaxY: minimun and maximun Y-value. 
-<br> These values are automatically populated, check and edit using your expertise. |
+| Preprocessor | Prepares and processes raw geological data and create new shapefile data for modelling. Only the new field selected above will be saved in the new shape files.|
+| Map2loop | Extracts and processes geological data from GIS sources. <br>- **Run MAP2LOOP parameters**:<br>- - Minimum Fault Length: Set the minimum length for faults (default: 5 km / 5000.0 m),<br>- Geology Sampler Spacing: Define the sampling resolution for geological formations (default: 200.0 m),<br>- Fault Sampler Spacing: Specify the sampling resolution for fault structures (default: 200.0 m), <br>- Base: map base value (default=-3200), <br>- Top: The elevation value (default=1200), <br>- MinX and MaxX: minimun and maximun X-value, <br>- MinY and MaxY: minimun and maximun Y-value. <br> These values are automatically populated, check and edit using your expertise. |
 | LoopStructural | Used for 3D geological modeling, integrating structural and geological data. Select the following server <br>- DOCKER: Docker server, GCP: Google Cloud Server, AWS: Amazon Web Server, and AZURE: Microsoft Cloud Server. Choose the server availaible for your own case.|
 | 3D PLOT | Used to visualize the result of loopStructural 3D modelling.|
 
