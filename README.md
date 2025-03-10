@@ -50,10 +50,7 @@ This plugin provides a comprehensive workflow for managing and processing geolog
 ### Run Tab
 | Feature | Description |
 |---------|-------------|
-| Save Configuration | 
-- **m2l Output**: Type the name of your Map2loop output folder (default: `m2l_output`).
-- **l2s Output**: Type the name of your LoopStructural output folder (default: `m2l_output`).
-- Click **Save Configuration** to save all configuration parameters into `data.json`. |
+| Save Configuration | - **m2l Output**: Type the name of your Map2loop output folder (default: `m2l_output`) <br>- **l2s Output**: Type the name of your LoopStructural output folder (default: `m2l_output`).<br>- Click <Save Configuration> to save all configuration parameters into data.json. |
 | Preprocessor | Prepares and processes raw geological data and and create new shapefile data for modelling. Only the new field selected above will be saved in the new shape files.|
 | Map2loop | Extracts and processes geological data from GIS sources. Run MAP2LOOP parameters: - Minimum Fault Length: Set the minimum length for faults (default: 5 km / 5000.0 m),
 - Geology Sampler Spacing: Define the sampling resolution for geological formations (default: 200.0 m),
