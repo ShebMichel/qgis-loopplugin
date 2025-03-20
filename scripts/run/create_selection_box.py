@@ -132,10 +132,6 @@ class Map2loopInQGIS:
 
 	def map2loop_in_qgis(self):
 		# this function run map2loop in qgis locally
-		#self.config_param={'geology_filename': 'C:/Users/00110138/OneDrive - The University of Western Australia/Project/Testing/2025/Loop/roi_test\\geol_clip.shp', 'fault_filename': 'C:/Users/00110138/OneDrive - The University of Western Australia/Project/Testing/2025/Loop/roi_test\\faults_clip.shp', 'structure_filename': 'C:/Users/00110138/OneDrive - The University of Western Australia/Project/Testing/2025/Loop/roi_test\\structure_clip.shp', 'dtm_filename': 'C:/Users/00110138/OneDrive - The University of Western Australia/Project/Testing/2025/Loop/roi_test\\dtm_rp.tif', 'metadata_filename': 'C:\\Users\\00110138\\OneDrive - The University of Western Australia\\Project\\Testing\\2025\\Loop\\roi_test\\process_data\\output.hjson', 'working_projection': 'EPSG:28350', 'clut_filename': 'C:\\Users\\00110138\\OneDrive - The University of Western Australia\\Project\\Testing\\2025\\Loop\\roi_test\\process_data\\500kibg_colours.csv'}
-		
-		print(f" QGIS runing map2loop... ... {self.config_param}")
-
 		m2l=M2l_Wrapper(conf_param=self.config_param,log_object=self.log_object, m2l_par_dict=self.m2l_par_dict,bbox=self.bbox)
 		m2l.run_all_wrapper()
 		return 

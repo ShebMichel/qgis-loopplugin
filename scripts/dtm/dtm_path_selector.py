@@ -23,7 +23,7 @@
 """
 
 from qgis.core import QgsRasterLayer, QgsProject
-from qgis.PyQt.QtWidgets import QMessageBox
+from qgis.PyQt.QtWidgets import QMessageBox,QInputDialog
 from qgis.PyQt.QtGui import QIcon
 from typing import List, Optional
 from pathlib import Path
@@ -62,50 +62,88 @@ class DTMPathSelector:
 				self.config_log.addItem(f" Select dtm is: {layer_path}")
 		return dtm_paths
 
+
+
+# from PyQt5.QtWidgets import QInputDialog, QMessageBox
+# from typing import Optional
+
 	def select_dtm_path(self) -> Optional[str]:
-		"""
-		Select a DTM path from available layers and handle multiple path scenarios.
+	    """
+	    Select a DTM path from available layers using a combobox if multiple layers exist.
+
+	    Returns:
+	        Selected DTM path or None if no selection was made.
+	    """
+	    dtm_paths = self.get_dtm_paths()
+
+	    if not dtm_paths:
+	        QMessageBox.warning(
+	            None,
+	            "No DTM Found",
+	            "No raster layers found in the project. Please add a DTM layer first."
+	        )
+	        return None
+
+	    if len(dtm_paths) == 1:
+	        return dtm_paths[0]
+
+	    # Create a combobox dialog for layer selection
+	    layer_names = [Path(path).stem for path in dtm_paths]
+	    selected_layer, ok = QInputDialog.getItem(
+	        None, "Select DTM", "Multiple potential DTM layers found.\nPlease select one.", layer_names, 0, False
+	    )
+
+	    if not ok or selected_layer not in layer_names:
+	        return None
+
+	    selected_index = layer_names.index(selected_layer)
+	    return dtm_paths[selected_index]
+
+
+	# def select_dtm_path(self) -> Optional[str]:
+	# 	"""
+	# 	Select a DTM path from available layers and handle multiple path scenarios.
 		
-		Returns:
-			Selected DTM path or None if no selection was made
-		"""
-		dtm_paths = self.get_dtm_paths()
+	# 	Returns:
+	# 		Selected DTM path or None if no selection was made
+	# 	"""
+	# 	dtm_paths = self.get_dtm_paths()
 		
-		if not dtm_paths:
-			QMessageBox.warning(
-				None,
-				"No DTM Found",
-				"No raster layers found in the project. Please add a DTM layer first."
-			)
-			return None
+	# 	if not dtm_paths:
+	# 		QMessageBox.warning(
+	# 			None,
+	# 			"No DTM Found",
+	# 			"No raster layers found in the project. Please add a DTM layer first."
+	# 		)
+	# 		return None
 			
-		if len(dtm_paths) == 1:
-			return dtm_paths[0]
+	# 	if len(dtm_paths) == 1:
+	# 		return dtm_paths[0]
 			
-		# If multiple DTMs found, show selection dialog
-		msg_box = QMessageBox()
-		msg_box.setIcon(QMessageBox.Question)
-		msg_box.setWindowTitle("Select DTM")
-		msg_box.setText("Multiple potential DTM layers found. Please select one:")
+	# 	# If multiple DTMs found, show selection dialog
+	# 	msg_box = QMessageBox()
+	# 	msg_box.setIcon(QMessageBox.Question)
+	# 	msg_box.setWindowTitle("Select DTM")
+	# 	msg_box.setText("Multiple potential DTM layers found. Please select one:")
 		
-		# Create buttons for each DTM path
-		buttons = []
-		for path in dtm_paths:
-			filename = Path(path).name.split('.')[0]
-			button = msg_box.addButton(filename, QMessageBox.ActionRole)
-			#button = msg_box.addButton(path, QMessageBox.ActionRole)
-			buttons.append(button)
+	# 	# Create buttons for each DTM path
+	# 	buttons = []
+	# 	for path in dtm_paths:
+	# 		filename = Path(path).name.split('.')[0]
+	# 		button = msg_box.addButton(filename, QMessageBox.ActionRole)
+	# 		#button = msg_box.addButton(path, QMessageBox.ActionRole)
+	# 		buttons.append(button)
 		
-		cancel_button = msg_box.addButton("Cancel", QMessageBox.RejectRole)
+	# 	cancel_button = msg_box.addButton("Cancel", QMessageBox.RejectRole)
 		
-		msg_box.exec_()
-		clicked_button = msg_box.clickedButton()
+	# 	msg_box.exec_()
+	# 	clicked_button = msg_box.clickedButton()
 		
-		if clicked_button == cancel_button:
-			return None
+	# 	if clicked_button == cancel_button:
+	# 		return None
 			
-		selected_index = buttons.index(clicked_button)
-		return dtm_paths[selected_index]
+	# 	selected_index = buttons.index(clicked_button)
+	# 	return dtm_paths[selected_index]
 
 	def update_line_edit(self) -> None:
 		"""

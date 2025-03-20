@@ -22,9 +22,14 @@
  ***************************************************************************/
 """
 
-import os,json,glob,shutil
+import os
+import json
+import glob
+import shutil
+import ast
 import  datetime
 from pathlib import Path
+import platform
 
 from qgis.PyQt import QtWidgets, uic
 from qgis.utils import iface
@@ -34,12 +39,13 @@ from PyQt5.QtCore import QDir
 # visualiz
 from .scripts.run.viz.vizualize_vtk import VTKVisualizer
 # run
+from .scripts.run.qgis.L2S_wrapper_in_qgis import LoopStructural_Wrapper_Qgis
 from .scripts.run.create_new_shapefile import ShapefileExtractorFromJSON
 from .scripts.run.create_selection_box import ServerInfoPanel, Map2loopInQGIS
 from .scripts.run.info_text import How_to_run_models
 from .scripts.run.docker.run_docker import run_docker_compose
 from .scripts.run.docker.loopstructural_client import LoopClientManager
-from .scripts.run.docker.data_transfert_to_local import DockerDataCopy
+#from .scripts.run.docker.data_transfert_to_local import DockerDataCopy
 # config
 from .scripts.config.loop_config import Loop3dConfig, CRSAppender
 from .scripts.config.settings_dict import SettingsDictionary
@@ -61,7 +67,8 @@ from .scripts.structure.struct_state_saver import StructStateSaver
 from .scripts.dtm.dtm_path_selector import DTMPathSelector
 # roi
 from .scripts.roi.create_your_roi import create_scratch_layer_and_activate_clipping,save_roi_from_panel,DataClipper
-
+# hover event
+from .hover_event import assign_tooltips_to_ui_elements
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "Loop3D_ModelGenerator_dockwidget_base.ui")
 )
@@ -93,6 +100,8 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.run_log_listWidget,
         ]
         How_to_run_models(self, list_log_objects=self.logs_list)
+        # Show qt features infos
+        assign_tooltips_to_ui_elements(self)
         # Plugin version
         self.version_label.setText(f"version: {version}")
         # Get the QGIS plugin path
@@ -117,6 +126,7 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.Run_Preprocessor_pushButton.clicked.connect(self.save_preprocessed_data)
         self.Run_Map2loop_pushButton.clicked.connect(self.run_map2loop)
         self.loop_docker_pushButton.clicked.connect(self.show_input_dialog)
+        self.loop_qgis_pushButton.clicked.connect(self.show_input_dialog)
         self.Run_LoopStructural_pushButton.clicked.connect(self.run_loopstructural)
 
         # ROI Section
@@ -129,28 +139,25 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         ### ## Geology & Toggle checkbox
         self.geology_Qgis_checkBox.stateChanged.connect(self.checkbox_toggled)
         self.geology_json_checkBox.stateChanged.connect(self.checkbox_toggled)
-        # self.SaveGeology_pushButton.clicked.connect(self.save_geol_parameters)  # uncomment
 
         ### fault & Toggle checkbox
         self.fault_Qgis_checkBox.stateChanged.connect(self.checkbox_toggled)
         self.fault_json_checkBox.stateChanged.connect(self.checkbox_toggled)
-        # self.SaveFault_pushButton.clicked.connect(self.save_fault_parameters)  # uncomment
 
         ### struct & Toggle checkbox
         self.struct_Qgis_checkBox.stateChanged.connect(self.checkbox_toggled)
         self.struct_json_checkBox.stateChanged.connect(self.checkbox_toggled)
-        # self.SaveStruct_pushButton.clicked.connect(self.save_struct_parameters) # uncomment
 
         ###  DTM
         self.conf_AUS_radioButton.toggled.connect(self.select_dtm_path)
         self.conf_JSON_radioButton.toggled.connect(self.select_dtm_path)
         self.conf_QGIS_radioButton.toggled.connect(self.select_dtm_path)
-        # Save Config parameters
 
-        self.SaveAllConfig_pushButton.clicked.connect(self.save_all_config_parameters)
-        self.SaveAllConfig_pushButton.clicked.connect(self.save_geol_parameters)
-        self.SaveAllConfig_pushButton.clicked.connect(self.save_fault_parameters)
-        self.SaveAllConfig_pushButton.clicked.connect(self.save_struct_parameters)
+        # Save Config parameters
+        # self.SaveAllConfig_pushButton.clicked.connect(self.save_all_config_parameters)
+        # self.SaveAllConfig_pushButton.clicked.connect(self.save_geol_parameters)
+        # self.SaveAllConfig_pushButton.clicked.connect(self.save_fault_parameters)
+        # self.SaveAllConfig_pushButton.clicked.connect(self.save_struct_parameters)
         # 3D Visualization
         self.Run_viz_pushButton.clicked.connect(self.plot_surfaces)
         # Initialize the GeologyFaultStructureComboBoxes class with this window as the parent
@@ -176,12 +183,17 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         ## set server off
         self.loop_gcp_pushButton.setEnabled(False)
         self.loop_aws_pushButton.setEnabled(False)
-        self.loop_azure_pushButton.setEnabled(False)
+        self.loop_qgis_pushButton.setEnabled(False)
         self.loop_docker_pushButton.setEnabled(False)
-       ## for testing only
+
+       ## set qpushbutton off
         self.Run_LoopStructural_pushButton.setEnabled(False)
         self.loop_docker_pushButton.setEnabled(False)
         self.Run_viz_pushButton.setEnabled(False)
+        #self.Run_Preprocessor_pushButton.setEnabled(False)
+        self.Run_Preprocessor_pushButton.setEnabled(True)
+        self.Run_LoopStructural_pushButton.setEnabled(False)
+        self.Run_Map2loop_pushButton.setEnabled(False)     ## To be deleted soon
         ###############################################################
     def plot_surfaces(self):
         # This return a 3D plot of the model
@@ -190,34 +202,43 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.run_log_listWidget.addItem(f" 3D Show ---> Success !!!!!")
 
     def show_input_dialog(self):
+    
         # show dynamic input for server
         self.server_flag = self.sender().text()
+        self.Run_LoopStructural_pushButton.setEnabled(True)
+       
         if self.server_flag == "DOCKER":
-            self.loop_wsl_pushButton.setEnabled(False)
-            self.loop_aws_pushButton.setEnabled(False)
-            self.loop_azure_pushButton.setEnabled(False)
+            self.loop_docker_pushButton.setEnabled(False)
+            # self.loop_gcp_pushButton.setEnabled(False)
+            # self.loop_aws_pushButton.setEnabled(False)
+            self.loop_qgis_pushButton.setEnabled(False)
             loop_obj = ServerInfoPanel(
                 run_log_listWidget=self.run_log_listWidget,
                 loop_docker_pushButton=self.loop_docker_pushButton,
             )
             loop_obj.load_docker_credentials()
-            self.Run_LoopStructural_pushButton.setEnabled(True)
-            yaml_dir = os.path.join(self.plugin_dir, "loopstructural_server")
-            self.container_name = run_docker_compose(
-                self, yaml_dir, run_log_listWidget=self.run_log_listWidget
-            )
-            self.server_info = loop_obj.get_data()
-            self.run_log_listWidget.addItem(f"{self.container_name} ready to be used")
-            # Enabled the LoopStructural 
-            self.Run_LoopStructural_pushButton.setEnabled(True)
+            
+            yaml_dir = os.path.join(self.plugin_dir, "scripts","run","docker","loopstructural_server")
+            if platform.system() == "Windows":
+                self.container_name = run_docker_compose(
+                    self, yaml_dir, run_log_listWidget=self.run_log_listWidget
+                )
+                self.server_info = loop_obj.get_data()
+                self.run_log_listWidget.addItem(f"{self.container_name} ready to be used")
+            else:
+                print(f" Using a different platform, eitheir linux or mac")
             return self.server_info
-
+        
+        elif self.server_flag=="QGIS":
+            self.loop_qgis_pushButton.setEnabled(False)
+            self.loop_docker_pushButton.setEnabled(False)
+            self.run_log_listWidget.addItem(f"LoopStructural running in QGIS Locally!")
+            return 
+        
     def run_loopstructural(self):
         # Run loopstructural
-        self.Run_Preprocessor_pushButton.setEnabled(False)
-        self.Run_Map2loop_pushButton.setEnabled(False)
+        self.loop_flag = self.sender().text()
         self.Run_LoopStructural_pushButton.setEnabled(False)
-        self.loop_docker_pushButton.setEnabled(False)
         self.Run_viz_pushButton.setEnabled(True)
         self.loop_flag = self.sender().text()
         server_output_folder     = './output_data/vtk'  # server output directory
@@ -227,30 +248,62 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         loop3d_file = str(self.process_path / m2l_output / "local_source.loop3d")
         destination = str(self.process_data_path + "/")
         shutil.copy(loop3d_file, destination)
-        self.run_log_listWidget.addItem(f" .loop3d file moved in process_data")
+        self.run_log_listWidget.addItem(f".loop3d file moved in process_data")
+       # running_container_name ="loopstructural_server-loopstructural-1"
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.local_output_dir = str(self.process_path / l2s_output / f"{timestamp}/vtk")
+        # Check if the folder exists, if not, create it
+        os.makedirs(self.local_output_dir, exist_ok=True)
+        self.run_log_listWidget.addItem(f"Folder '{self.local_output_dir}' is ready!")
+        if self.server_flag =="QGIS":
+            self.run_log_listWidget.addItem(f"LoopStructural running in QGIS Locally!")
+            param_conf = {"LPFilename": str(loop3d_file),"fault nelements": self.fault_nelts_lineedit.text(), "regularisation": self.regularisation_lineedit.text(),"interpolatortype": self.interpolator_comboBox.currentText(),"foliation nelements": self.foliation_nelts_lineedit.text()}
+            l2s_obj=LoopStructural_Wrapper_Qgis(param_conf,self.run_log_listWidget,self.local_output_dir)
+            result_output_path=l2s_obj.run_all()
+            try:
+                output_data_list= l2s_obj.move_vtk_files(result_output_path,self.local_output_dir)
+            except Exception as e:
+                
+                print(f"Error: {e}")
 
-        running_container_name ="loopstructural_server-loopstructural-1"
-        # Initialize LoopClientManager
-        l2s_manager = LoopClientManager(self.server_info['hostname'],int(self.server_info['portname']))
-        try: 
-            if str(self.container_name)=="loopstructural_server-loopstructural-1":
-                self.run_log_listWidget.addItem("The {self.container_name} docker container is availaible...")
+            self.loop_qgis_pushButton.setEnabled(False)
+        else:
+            # Initialize LoopClientManager
+            l2s_manager = LoopClientManager(self.server_info['hostname'],int(self.server_info['portname']))
+            try: 
                 # Ping the server
                 if l2s_manager.ping_server():
                     self.run_log_listWidget.addItem("Server is online. Proceeding with file transfer...")
                     data_list = glob.glob(self.process_data_path + "/*")
                     N = len(data_list)
-                    
                     for idx, filepath in enumerate(data_list):
                         filename = Path(filepath).name
                         upload_response = l2s_manager.data_uploader(filename, filepath, idx, N)
                         self.run_log_listWidget.addItem(f"Upload Response: {upload_response}")
                         if upload_response  == "All data from client 1 received" and idx + 1 == N:
                             # Execute loop process
-                            conf_param = {"params": "./source_data/server_local_source.loop3d"}
+                            conf_param = {"LPFilename": "./server/source_data/server_local_source.loop3d","fault nelements": self.fault_nelts_lineedit.text(), "regularisation": self.regularisation_lineedit.text(),"interpolatortype": self.interpolator_comboBox.currentText(),"foliation nelements": self.foliation_nelts_lineedit.text()}
                             loop_output, loop_exec_msg = l2s_manager.loop_executor(str(conf_param))
+                            # # Convert string to dictionary
+                            vtk_files = ast.literal_eval(loop_output)
+                            Nbre_server_data = len(vtk_files)
+                            self.run_log_listWidget.addItem(f"{Nbre_server_data} Files to download from the server")
                             if loop_exec_msg == "LoopStructural execution completed successfully":
                                 self.run_log_listWidget.addItem("LoopStructural execution completed successfully")
+                                try:
+                                    idx=0
+                                    for server_filename, server_path in vtk_files.items():
+                                        l2s_manager.data_downloader(str(server_filename),str(self.local_output_dir),int(Nbre_server_data), int(idx))
+                                        if idx+1 == Nbre_server_data:
+                                            self.run_log_listWidget.addItem(f"ALL {Nbre_server_data} FILES ARE SUCCESSFULLY DOWNLOADED!")
+                                            self.run_log_listWidget.addItem(f"====================================== 3D PLOT ==================================")
+                                            self.run_log_listWidget.addItem(f" Click <3D Plot> to visualize the model!")
+                                        else:
+                                            self.run_log_listWidget.addItem(f" Server filename: {server_filename} Successfully Saved! ")
+                                        idx+=1
+                                except:
+                                    self.run_log_listWidget.addItem(f" Error server is not responding!")
+
                             else:
                                 self.run_log_listWidget.addItem(f"LoopStructural did not execute successfull")
                         else:
@@ -258,26 +311,16 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 
                 else:
                     self.run_log_listWidget.addItem(f" The data is not running")                
-            else:
-                pass
-            try:      
-                datatransfert_object =DockerDataCopy()
-                timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-                self.local_output_dir = str(self.process_path / l2s_output / f"{timestamp}/vtk")
-                # Example usage:
-                container_id = datatransfert_object.find_running_container(running_container_name)
-                self.run_log_listWidget.addItem(f"Data Successfully copied to {self.local_output_dir}")
-                datatransfert_object.copy_from_docker(running_container_name,server_output_folder,self.local_output_dir)
+
             except:
-                pass
-        except:
-            self.run_log_listWidget.addItem("Can't connection !!!!!")
+                self.run_log_listWidget.addItem("Can't connection !!!!!")
+
 
     def run_map2loop(self):
         # run map2loop
-        #self.Run_LoopStructural_pushButton.setEnabled(True)
         self.Run_Map2loop_pushButton.setEnabled(False)
         self.loop_docker_pushButton.setEnabled(True)
+        self.loop_qgis_pushButton.setEnabled(True)
 
         # Extract map2loop value:
         map_base = int(self.base_lineedit.text())
@@ -314,7 +357,10 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             m2l_list_of_label=self.m2l_list_of_label,
             m2l_list_of_input=self.m2l_list_of_input,
         )
-        # self.merged_config = {**self.config_param, **bbox_3d}
+       
+        thicknes_calculator_selection = {"Interpolator function": self.thickness_calculator_comboBox.currentText()}
+        self.m2l_par_dict ={**self.m2l_par_dict, **thicknes_calculator_selection }
+        print(f" The selected m2l_par is {self.m2l_par_dict}")
         # Create an instance of Map2loopInQGIS
         self.run_log_listWidget.addItem(f"Running Map2loop in QGIS Backend.")
         run_m2l = Map2loopInQGIS(
@@ -324,13 +370,22 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             config_param=self.config_param,
             bbox=self.bbox_3d,
         )
-        print(f" Passed object of m2l object")
         run_m2l.map2loop_in_qgis()
+        # Fill in the loop parameters
+        self.regularisation_lineedit.setText("5")
+        self.fault_nelts_lineedit.setText("1e4")
+        self.foliation_nelts_lineedit.setText("1e5")
 
         return
 
     def save_preprocessed_data(self):
         # This function is used to save the preprocessed data with only selected table headers
+        self.Run_Map2loop_pushButton.setEnabled(True)
+        self.Run_Preprocessor_pushButton.setEnabled(False)
+        self.save_all_config_parameters()
+        self.save_geol_parameters()
+        self.save_fault_parameters()
+        self.save_struct_parameters()
         self.data_source_path = self.lineEdit_param_load_source_path.text().strip()
         self.data_source_dir = QDir(self.data_source_path)
 
@@ -348,9 +403,7 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             preproc_list_of_input=self.preprocessor_value_list,
             proc_Widgelist=self.run_log_listWidget,
         )
-        self.Run_Preprocessor_pushButton.setEnabled(False)
-        self.Run_LoopStructural_pushButton.setEnabled(False)
-        self.Run_Map2loop_pushButton.setEnabled(False)
+
         extractor = ShapefileExtractorFromJSON(
             run_log_listWidget=self.run_log_listWidget,
             map2loop_button=self.Run_Map2loop_pushButton,
@@ -359,15 +412,16 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             dtm_toggle=self.dtm_toggle,
         )
 
-        # Let the user select the JSON file
+        # Get the data from json_file
         self.config_param = extractor.select_json_file()
+        # load all process data:
+        self.process_data_folder = Path(self.json_data_path).parent
+        extractor.add_all_layers_from_directory(self.process_data_folder)
         # Add bbox_dict here
         if self.dtm_toggle == "QGIS":
             path_to_extract_top_base = self.lineEdit_dtm_path.text()
             # Consider when data is clipped
-            # if ...
             minx, miny, maxx, maxy = extract_bbox(self, str(path_to_extract_top_base))
-
             # round the value
             minx, miny, maxx, maxy = (
                 round(minx, 1),
@@ -399,7 +453,6 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.g_sampler_lineedit.setText("200.0")
         self.f_sampler_lineedit.setText("200.0")
         self.sampler_decimator_lineedit.setText("2")
-        self.Run_Map2loop_pushButton.setEnabled(True)
         # Consider also when data is clipped:
         return
 
@@ -421,7 +474,6 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
     def save_geol_parameters(self):
         # this function return all the layers data as a dict
-        self.SaveAllConfig_pushButton.setEnabled(False)
         self.saver_object = StateSaver(
             geology_combo_boxes=self.geology_combo_boxes,
             geology_param_boxes=self.geology_param_boxes,
@@ -429,13 +481,6 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             intrusion_QLineEdit=self.geology_intrusion_QLineEdit,
             geology_QLineEdit=self.geology_QLineEdit,
         )
-        # Set Enabled feature to False
-        for cbox in self.geology_combo_boxes:
-            cbox.setEnabled(False)
-        for tbox in self.geology_param_boxes:
-            tbox.setEnabled(False)
-        self.geology_sill_QLineEdit.setEnabled(False)
-        self.geology_intrusion_QLineEdit.setEnabled(False)
         try:
             # Save state current_state,
             self.json_data = self.saver_object.save_parameters()
@@ -458,13 +503,6 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             struct_overturned_QLineEdit=self.struct_overturned_QLineEdit,
             struct_line_edit=self.struct_QLineEdit,
         )
-        # Set Enabled feature to False
-        for cbox in self.struct_combo_boxes:
-            cbox.setEnabled(False)
-        for tbox in self.struct_param_boxes:
-            tbox.setEnabled(False)
-        self.struct_bedding_QLineEdit.setEnabled(False)
-        self.struct_overturned_QLineEdit.setEnabled(False)
         try:
             # Save state current_state,
             self.json_data = self.saver_object.save_parameters()
@@ -487,13 +525,6 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             fault_fdipest_QLineEdit=self.fault_fdipest_QLineEdit,
             fault_line_edit=self.fault_QLineEdit,
         )
-        # Set Enabled feature to False
-        for cbox in self.fault_combo_boxes:
-            cbox.setEnabled(False)
-        for tbox in self.fault_param_boxes:
-            tbox.setEnabled(False)
-        self.fault_ftext_QLineEdit.setEnabled(False)
-        self.fault_fdipest_QLineEdit.setEnabled(False)
         try:
             # Save state current_state,
             self.json_data = self.saver_object.save_parameters()
@@ -539,7 +570,7 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
     def save_all_config_parameters(self):
         # This function is used to save the configuration files
-        # self.SaveConfiguration_pushButton.setEnabled(False)
+        #self.Run_Preprocessor_pushButton.setEnabled(True)
         config_settings = SettingsDictionary()
         config_settings.add_multiple_mappings(
             {
@@ -552,8 +583,6 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         try:
             self.config_param = config_settings.create_dictionary()
             self.process_path = Path(self.config_param["Input Folder"])
-            # self.process_path = Path(self.config_param["DTM path"]).parent
-
             self.process_data_path = os.path.join(self.process_path, "process_data")
             self.json_data_path = str(self.process_data_path) + "/data.json"
             # # Create an instance of the class with the file path
@@ -589,14 +618,11 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         if self.dtm_toggle == "QGIS":
             self.dtm_path = dtm_selector.update_line_edit()
         elif self.dtm_toggle == "AUS":
-            # self.dtm_path = "http://services.ga.gov.au/gis/services/DEM_SRTM_1Second_over_Bathymetry_Topography/MapServer/WCSServer?"
-            self.dtm_path = "https://services.ga.gov.au/gis/rest/services/World_Bathymetry_Imagery/MapServer/WMTS?"
+            self.dtm_path = "https://services.ga.gov.au/gis/services/Bathymetry_Topography/MapServer/WCSServer?request=GetCapabilities&service=WCS"
             self.lineEdit_dtm_path.setText(self.dtm_path)
             self.conf_log_listWidget.addItem(
                 f"DTM file path extract from <Geoscience Australia> server"
             )
-            # Scrap this site if it is dynamically changed?
-            # use this API: https://services.ga.gov.au/gis/rest/services/World_Bathymetry_Imagery/MapServer/WMTS/1.0.0/WMTSCapabilities.xml
         else:
 
             self.dtm_path = "JSON path Upcoming soon"
@@ -652,7 +678,6 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
     def checkbox_toggled(self):
         # Deal with all checkbox in populating data
         # ... other initialization code ...
-
         self.checkbox_handler = LayerCheckboxHandler(
             self,
             geology_log=self.geology_log_listWidget,
@@ -707,8 +732,7 @@ class Loop3DModelGenDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msg_to_display = [
                 "You're almost there! 🎉\n ",
                 "Review all selection, make any necessary adjustments.",
-                "click <Save Configuration> to confirm.",
-                "To continue, go to the next Layer Tab.",
+                "To continue, go to the next Tabs to define further properties.",
             ]
             self.conf_log_listWidget.addItem(
                 f"Data Clipping Status: NO --> Raw Data to be used for modelling"

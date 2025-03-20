@@ -123,7 +123,7 @@ class FaultLayerHandler:
 		self.fault_param_values = [
 			"90",
 			"5",
-			"5000"
+			"5000.0"
 		]
 		#print("Button clicked!")  # Debug print
 		current_index = self.fault_combobox.currentIndex()

@@ -123,7 +123,7 @@ class StructLayerHandler:
 		self.struct_param_values = [
 			"90",
 			"5",
-			"5000"
+			"5000.0"
 		]
 		#print("Button clicked!")  # Debug print
 		current_index = self.struct_combobox.currentIndex()

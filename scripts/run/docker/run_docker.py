@@ -90,46 +90,44 @@ def get_running_container(docker_path,image_name):
 
 
 def run_docker_compose(self, yaml_directory, run_log_listWidget):
-    """Check if the container is running; if not, build and start it."""
-    self.run_log_listWidget = run_log_listWidget
-    docker_path = find_docker_path()
+	"""Check if the container is running; if not, build and start it."""
+	self.run_log_listWidget = run_log_listWidget
+	docker_path = find_docker_path()
 
-    if not is_docker_installed():
-        self.run_log_listWidget.addItem("Docker is not installed or not in PATH. Please install Docker.")
-        return
+	if not is_docker_installed():
+		self.run_log_listWidget.addItem("Docker is not installed or not in PATH. Please install Docker.")
+		return
 
-    image_name = "loopstructural_server-loopstructural"
+	image_name = "loopstructural_server-loopstructural"
 
-    try:
-        container_name = get_running_container(docker_path, image_name)
+	try:
+		container_name = get_running_container(docker_path, image_name)
 
-        if is_container_running(docker_path, container_name):
-            self.run_log_listWidget.addItem(f"Container '{container_name}' is already running.")
-            return container_name  # Return the running container's name
+		if is_container_running(docker_path, container_name):
+			self.run_log_listWidget.addItem(f"Container '{container_name}' is already running.")
+			return container_name  # Return the running container's name
 
-    except Exception as e:
-        self.run_log_listWidget.addItem(f"Error checking container status: {e}")
+	except Exception as e:
+		self.run_log_listWidget.addItem(f"Error checking container status: {e}")
 
-    # If not running, start the container
-    self.run_log_listWidget.addItem("Starting Docker Compose...")
+	# If not running, start the container
+	self.run_log_listWidget.addItem("Starting Docker Compose...")
 
-    compose_command = [str(docker_path), "compose", "up", "--build", "-d"]
-    
-    try:
-        if platform.system() == "Windows":
-            subprocess.run(compose_command, cwd=str(yaml_directory), shell=True, check=True)
-        else:  # Linux or macOS
-            subprocess.run(compose_command, cwd=str(yaml_directory), check=True)
+	try:
+		
+		if platform.system() == "Windows":
+			compose_command = [str(docker_path), "compose", "up", "--build", "-d"]
+			subprocess.run(compose_command, cwd=str(yaml_directory), shell=True, check=True)
+			self.run_log_listWidget.addItem("Docker Compose started successfully!")
+			container_name = get_running_container(docker_path, image_name)
+			self.run_log_listWidget.addItem(f"Container '{container_name}' is now running!")
+			return container_name
+		else:  # Linux or macOS
+			self.run_log_listWidget.addItem("Only check if container is running!")
+			return 
 
-        self.run_log_listWidget.addItem("Docker Compose started successfully!")
-        
-        # Get the container name after starting
-        container_name = get_running_container(docker_path, image_name)
-        self.run_log_listWidget.addItem(f"Container '{container_name}' is now running!")
-        return container_name
-
-    except subprocess.CalledProcessError as e:
-        self.run_log_listWidget.addItem(f"Error running Docker Compose: {e}")
-        return None
+	except subprocess.CalledProcessError as e:
+		self.run_log_listWidget.addItem(f"Error running Docker Compose: {e}")
+		return None
 
 

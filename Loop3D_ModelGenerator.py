@@ -24,6 +24,7 @@
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication, Qt
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
+from qgis.PyQt.QtWidgets import QDockWidget
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -257,4 +258,19 @@ class Loop3DModelGen:
 			# TODO: fix to allow choice of dock location
 			self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dockwidget)
 
+			# Find existing dock widgets in the right area
+			right_docks = [
+				d
+				for d in self.iface.mainWindow().findChildren(QDockWidget)
+				if self.iface.mainWindow().dockWidgetArea(d) == Qt.RightDockWidgetArea
+			]
+			# If there are other dock widgets, tab this one with the first one found
+			if right_docks:
+				for dock in right_docks:
+					if dock != self.dockwidget:
+						self.iface.mainWindow().tabifyDockWidget(dock, self.dockwidget)
+						# Optionally, bring your plugin tab to the front
+						self.dockwidget.raise_()
+						break
+			# Raise the docked widget above others
 			self.dockwidget.show()

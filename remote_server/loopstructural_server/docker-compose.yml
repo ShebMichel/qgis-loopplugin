@@ -6,6 +6,7 @@ services:
     labels:
       - "maintainer= Michel M. Nzikou  michel.nzikoumamboukou@uwa.edu.au"
       - " This  docker container create a loopstructural service for 3D modelling"
+#    network_mode: host
     ports:
       - "8888:8888"
     restart: unless-stopped

@@ -261,9 +261,35 @@ class ShapefileExtractorFromJSON:
 			error = QgsVectorFileWriter.writeAsVectorFormat(output_layer, output_path, "UTF-8", output_layer.crs(), "ESRI Shapefile")
 			if error[0] == QgsVectorFileWriter.NoError:
 				self.run_log_listWidget.addItem(f"Shapefile created: {output_path}")
+				# self.add_all_layers_from_directory(output_directory)
+				#self.load_shapefile(output_path)
 			else:
 				self.run_log_listWidget.addItem(f"Error creating shapefile for {filename_strip}: Code {error[0]}, Message '{error[1]}'")
 
+	def load_shapefile(self,filepath: str):
+		"""
+		Loads a shapefile into the QGIS panel if the filepath is valid.
+
+		Args:
+			filepath (str): The path to the shapefile.
+
+		Returns:
+			QgsVectorLayer: The loaded layer if successful, otherwise None.
+		"""
+		if not os.path.exists(filepath):
+			QMessageBox.critical(None, "File Not Found", f"The file '{filepath}' does not exist.")
+			return None
+
+		layer = QgsVectorLayer(filepath, os.path.basename(filepath), "ogr")
+
+		if not layer.isValid():
+			QMessageBox.critical(None, "Invalid Shapefile", f"Could not load '{filepath}'. The file might be corrupted or unsupported.")
+			return None
+
+		QgsProject.instance().addMapLayer(layer)
+		#self.add_all_layers_from_directory(output_directory)
+		self.run_log_listWidget.addItem(f"Loaded in QGIS Panel: {output_path}")
+		return layer
 
 	def copy_dtm_if_exists(self,dtm_path, output_directory):
 		"""

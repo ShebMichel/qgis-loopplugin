@@ -1,4 +1,5 @@
 map2loop
+loopstructural
 fiona
 geopandas
 rasterio

@@ -2,7 +2,6 @@
 # coding: utf-8
 
 ## Loop Workflow Example 3
-
 from map2loop.project import Project
 from map2loop.m2l_enums import VerboseLevel
 import LoopProjectFile as LPF
@@ -15,17 +14,10 @@ import os, ast, shutil
 ####
 from osgeo import gdal
 from loopstructuralvisualisation import Loop3DView
-
-# from LoopStructural.visualisation import Loop3DView
-# from LoopStructural.modelling.input.project_file import (
-#     LoopProjectfileProcessor as LPFProcessor,
-# )
-
 from LoopStructural.modelling import (
     LoopProjectfileProcessor as LPFProcessor,
 )
 
-#
 
 
 def move_vtk_files(source_directory, target_directory):
@@ -59,20 +51,18 @@ class LoopStructural_Wrapper:
 
         t1 = time.time()
 
-        config_data = self.param_conf
-        # Renaming the filename so that it match the docker filenames
-        print('config_data["geology_filename"]: ', config_data["geology_filename"])
-        print("loop3d is: ", str(config_data["LPFilename"]))
-        LPFilename = "./server/source_data/" + str(config_data["LPFilename"])
+        LPFilename = str(self.param_conf["LPFilename"])                               #./source_data/server_local_source.loop3d" 
         fault_params = {
-            "interpolatortype": "FDI",
-            "nelements": 1e4,
+            "interpolatortype": str(self.param_conf["interpolatortype"]),             #"FDI",
+            "nelements": float(self.param_conf["fault nelements"]),             #1e4,
         }
         foliation_params = {
-            "interpolatortype": "FDI",  # 'interpolatortype':'PLI',
-            "nelements": 1e5,  # how many tetras/voxels
-            "regularisation": 5,
+            "interpolatortype": str(self.param_conf["interpolatortype"]),             #"FDI",  #'interpolatortype':'PLI',
+            "nelements":float(self.param_conf["foliation nelements"]),      #1e5,  # how many tetras/voxels
+            "regularisation": int(self.param_conf["regularisation"]),                 #5,
         }
+        print(f" fault parameters {fault_params}")
+        print(f" foliation parameters {foliation_params}")
         projFile = LPF.ProjectFile(LPFilename)
         processedData = LPFProcessor(projFile)
         processedData.foliation_properties["sg"] = foliation_params
@@ -93,7 +83,7 @@ class LoopStructural_Wrapper:
         try:
             vtk_path = str(os.getcwd()) + "/" + str(model_name) + "/vtk/"
         except:
-            print("If I am here, this mean ./vtk test failed")
+            print("./vtk test failed")
             pass
         if not os.path.exists(vtk_path):
             os.mkdir(vtk_path)

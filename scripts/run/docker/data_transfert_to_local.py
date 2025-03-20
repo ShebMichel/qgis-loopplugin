@@ -79,8 +79,10 @@ class DockerDataCopy:
         """
         if not os.path.exists(local_dir):
             os.makedirs(local_dir, exist_ok=True)
-        
-        command = [self.docker_exe_path, "cp", f"{container_name}:{container_dir}/.", local_dir]
+        if platform.system() == "Windows":
+            command = [self.docker_exe_path, "cp", f"{container_name}:{container_dir}/.", local_dir]
+        else:
+             command = ["docker", "cp", local_dir, f"{container_name}:~/output_data/vtk"]
         self._run_command(command)
     
     def find_running_container(self, container_name):

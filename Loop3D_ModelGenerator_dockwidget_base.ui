@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>788</width>
+    <width>794</width>
     <height>830</height>
    </rect>
   </property>
@@ -56,7 +56,7 @@ QTabBar::tab:hover {
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="configuration_tab">
        <attribute name="title">
@@ -69,7 +69,7 @@ QTabBar::tab:hover {
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>20</y>
+          <y>10</y>
           <width>371</width>
           <height>91</height>
          </rect>
@@ -157,9 +157,9 @@ border-style: solid;border-width: 1px;border-color: black
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>130</y>
+          <y>120</y>
           <width>371</width>
-          <height>91</height>
+          <height>111</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -232,7 +232,7 @@ font-size: 13px;
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>60</y>
+           <y>70</y>
            <width>91</width>
            <height>20</height>
           </rect>
@@ -261,7 +261,7 @@ font-size: 13px;
          <property name="geometry">
           <rect>
            <x>100</x>
-           <y>60</y>
+           <y>70</y>
            <width>251</width>
            <height>25</height>
           </rect>
@@ -457,7 +457,7 @@ font-size: 13px;
               </font>
              </property>
              <property name="text">
-              <string>RESET</string>
+              <string>Reset</string>
              </property>
             </widget>
            </item>
@@ -541,7 +541,7 @@ font-size: 13px;
           <x>10</x>
           <y>260</y>
           <width>371</width>
-          <height>91</height>
+          <height>101</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -703,7 +703,7 @@ border-style: solid;border-width: 1px;border-color: black
          </font>
         </property>
         <property name="text">
-         <string>Authors: Michel M. Nzikou, Mark Jessel and the Loop3D Foundation team, funded by MinEx-CRC</string>
+         <string>Authors: Michel M. Nzikou, Mark Jessell and the Loop3D Foundation team, funded by MinEx-CRC and the ARC</string>
         </property>
        </widget>
       </widget>
@@ -807,7 +807,7 @@ border-style: solid;border-width: 1px;border-color: black
                 <item>
                  <widget class="QPushButton" name="geology_clear_pushButton">
                   <property name="text">
-                   <string>CLEAR</string>
+                   <string>Reset</string>
                   </property>
                  </widget>
                 </item>
@@ -1596,7 +1596,7 @@ font-size: 13px;
              <bool>true</bool>
             </property>
             <property name="placeholderText">
-             <string>intrusion text to search in the data</string>
+             <string>pluton dip value</string>
             </property>
            </widget>
           </item>
@@ -1876,7 +1876,7 @@ font-size: 13px;
                 <item>
                  <widget class="QPushButton" name="fault_clear_pushButton">
                   <property name="text">
-                   <string>CLEAR</string>
+                   <string>Reset</string>
                   </property>
                  </widget>
                 </item>
@@ -2633,7 +2633,7 @@ font-size: 13px;
                 <item>
                  <widget class="QPushButton" name="struct_clear_pushButton">
                   <property name="text">
-                   <string>CLEAR</string>
+                   <string>Reset</string>
                   </property>
                  </widget>
                 </item>
@@ -3233,7 +3233,7 @@ font-size: 13px;
           <x>10</x>
           <y>190</y>
           <width>241</width>
-          <height>161</height>
+          <height>201</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -3265,7 +3265,7 @@ font-size: 13px;
               </font>
              </property>
              <property name="text">
-              <string>Process all data for map2loop input</string>
+              <string>Process map2loop data input</string>
              </property>
             </widget>
            </item>
@@ -3275,9 +3275,9 @@ font-size: 13px;
           <widget class="QPushButton" name="Run_Preprocessor_pushButton">
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
+             <pointsize>8</pointsize>
              <weight>75</weight>
-             <italic>true</italic>
+             <italic>false</italic>
              <bold>true</bold>
             </font>
            </property>
@@ -3307,7 +3307,7 @@ font-size: 13px;
           <x>260</x>
           <y>190</y>
           <width>251</width>
-          <height>161</height>
+          <height>201</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -3327,99 +3327,6 @@ font-size: 13px;
          <string>2.2: Run MAP2LOOP</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
-         <item row="2" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_24">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_23">
-             <item>
-              <widget class="QLabel" name="miny_label">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>MinY</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="miny_lineedit">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="placeholderText">
-                <string>change it if not happy</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_22">
-             <item>
-              <widget class="QLabel" name="maxy_label">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>MaxY</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="maxy_lineedit">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="placeholderText">
-                <string>change it if not happy</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item row="4" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_10">
-           <item>
-            <widget class="QPushButton" name="Run_Map2loop_pushButton">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-               <weight>75</weight>
-               <italic>true</italic>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {border-radius: 10px;  
-              border: 2px solid #0078d4;  
-              padding: 5px 10px;  
-              background-color: #f0f0f0;
-              }</string>
-             </property>
-             <property name="text">
-              <string>MAP2LOOP</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
          <item row="0" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_25">
            <item>
@@ -3477,6 +3384,70 @@ font-size: 13px;
                </property>
                <property name="placeholderText">
                 <string>1200</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_24">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_23">
+             <item>
+              <widget class="QLabel" name="miny_label">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>MinY</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="miny_lineedit">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="placeholderText">
+                <string>change it if not happy</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_22">
+             <item>
+              <widget class="QLabel" name="maxy_label">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>MaxY</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="maxy_lineedit">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="placeholderText">
+                <string>change it if not happy</string>
                </property>
               </widget>
              </item>
@@ -3548,6 +3519,63 @@ font-size: 13px;
            </item>
           </layout>
          </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="Run_Map2loop_pushButton">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {border-radius: 10px;  
+              border: 2px solid #0078d4;  
+              padding: 5px 10px;  
+              background-color: #f0f0f0;
+              }</string>
+           </property>
+           <property name="text">
+            <string>MAP2LOOP</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="thickness_calculator_label">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Thickness Calculator</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="thickness_calculator_comboBox">
+             <item>
+              <property name="text">
+               <string>InterpStructure</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ThicknessCalc</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
         </layout>
        </widget>
        <widget class="QGroupBox" name="Run_groupBox_3">
@@ -3559,7 +3587,7 @@ font-size: 13px;
           <x>520</x>
           <y>190</y>
           <width>231</width>
-          <height>161</height>
+          <height>201</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -3579,56 +3607,13 @@ font-size: 13px;
          <string>3.2: Run LOOPSTRUCTURAL</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
-         <item row="1" column="0">
-          <widget class="QPushButton" name="Run_LoopStructural_pushButton">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <italic>true</italic>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {border-radius: 10px;  
-              border: 2px solid #0078d4;  
-              padding: 5px 10px;  
-              background-color: #f0f0f0;
-              }</string>
-           </property>
-           <property name="text">
-            <string>LOOPSTRUCTURAL</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_11">
-           <item>
-            <widget class="QLabel" name="loopstructural_info_label">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Model the data</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="0">
+         <item row="2" column="1">
           <widget class="QPushButton" name="Run_viz_pushButton">
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
+             <pointsize>8</pointsize>
              <weight>75</weight>
-             <italic>true</italic>
+             <italic>false</italic>
              <bold>true</bold>
             </font>
            </property>
@@ -3647,6 +3632,141 @@ font-size: 13px;
            </property>
           </widget>
          </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="Run_LoopStructural_pushButton">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {border-radius: 10px;  
+              border: 2px solid #0078d4;  
+              padding: 5px 10px;  
+              background-color: #f0f0f0;
+              }</string>
+           </property>
+           <property name="text">
+            <string>LOOPSTRUCTURAL</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="2">
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="foliation_nelts_lineedit">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="placeholderText">
+              <string>1e5</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="foliation_nelts_label">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Foliation grid size</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="fault_nelts_label">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Fault grid size</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="interpolator_label_2">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Interpolatortype</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="regularisation_lineedit">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="placeholderText">
+              <string>5</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="fault_nelts_lineedit">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="placeholderText">
+              <string>1e4</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="regularisation_label">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Regularisation</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="interpolator_comboBox">
+             <item>
+              <property name="text">
+               <string>FDI</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>PLI</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
         </layout>
        </widget>
        <widget class="QGroupBox" name="Run_groupBox_6">
@@ -3658,7 +3778,7 @@ font-size: 13px;
           <x>520</x>
           <y>20</y>
           <width>231</width>
-          <height>151</height>
+          <height>161</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -3684,7 +3804,7 @@ font-size: 13px;
             <enum>QFrame::Box</enum>
            </property>
            <layout class="QFormLayout" name="formLayout_10">
-            <item row="1" column="1">
+            <item row="2" column="1">
              <widget class="QPushButton" name="loop_gcp_pushButton">
               <property name="font">
                <font>
@@ -3697,7 +3817,7 @@ font-size: 13px;
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
+            <item row="4" column="1">
              <widget class="QPushButton" name="loop_aws_pushButton">
               <property name="font">
                <font>
@@ -3710,20 +3830,7 @@ font-size: 13px;
               </property>
              </widget>
             </item>
-            <item row="4" column="1">
-             <widget class="QPushButton" name="loop_azure_pushButton">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>AZURE</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
+            <item row="1" column="1">
              <widget class="QPushButton" name="loop_docker_pushButton">
               <property name="font">
                <font>
@@ -3733,6 +3840,19 @@ font-size: 13px;
               </property>
               <property name="text">
                <string>DOCKER</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="loop_qgis_pushButton">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>QGIS</string>
               </property>
              </widget>
             </item>
@@ -3748,9 +3868,9 @@ font-size: 13px;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>350</y>
+          <y>390</y>
           <width>741</width>
-          <height>411</height>
+          <height>371</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -3790,7 +3910,7 @@ font-size: 13px;
           <x>260</x>
           <y>20</y>
           <width>251</width>
-          <height>151</height>
+          <height>161</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -3934,7 +4054,7 @@ font-size: 13px;
           <x>10</x>
           <y>20</y>
           <width>241</width>
-          <height>151</height>
+          <height>161</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -4009,24 +4129,6 @@ font-size: 13px;
               </property>
               <property name="placeholderText">
                <string>l2s_output</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="2">
-             <widget class="QPushButton" name="SaveAllConfig_pushButton">
-              <property name="font">
-               <font>
-                <family>Palatino Linotype</family>
-                <pointsize>12</pointsize>
-                <weight>75</weight>
-                <italic>false</italic>
-                <bold>true</bold>
-                <underline>false</underline>
-                <kerning>false</kerning>
-               </font>
-              </property>
-              <property name="text">
-               <string>Save Configuration</string>
               </property>
              </widget>
             </item>
