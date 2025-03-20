@@ -8,10 +8,10 @@ This plugin provides a comprehensive workflow for managing and processing geolog
 - QGIS>=3.38.1 (Grenoble)
 - All modules in the requirements.txt can individually be installed via OSGeo4W shell, i.e: (`pip install map2loop`)
 - Make sure the following versions exist:
-<br>````LoopProjectFile ==0.2.2````<br>
-<br>````LoopStructural  == 1.6.8````<br>
-<br>````map2loop        == 3.2.2````<br>
-<br>````map2model       == 1.2.1````<br>
+<br>````LoopProjectFile ==0.2.2````
+<br>````LoopStructural  == 1.6.8````
+<br>````map2loop        == 3.2.2````
+<br>````map2model       == 1.2.1````
 
 ### Data
 In order to run map2loop you will need the following input files:
